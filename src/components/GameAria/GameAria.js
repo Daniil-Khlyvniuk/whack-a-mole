@@ -11,7 +11,7 @@ const GameAria = () => {
                     [...Array(15)]
                         .map((e, i) =>
                             ([0, 4, 10, 14].includes(i))
-                                ? <div key={i}></div>
+                                ? <div key={i}/>
                                 : <HoleWrapper key={i}/>
                         )
                 }

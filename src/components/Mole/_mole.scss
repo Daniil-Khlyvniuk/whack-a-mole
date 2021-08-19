@@ -1,190 +1,12 @@
 .mole {
-    //margin: 0 auto;
     width: 75%;
     display: block;
     margin: 0 auto;
-    //aspect-ratio: 1 / 2;
-    //background-color: rgb(87, 67, 56);
-    //border-radius: 50% / 25%;
-    position: relative;
-//transform: translateY(90px);
-    z-index: 1;
-
-&::before {
-     //content: "";
-     //position: absolute;
-     //top: 0;
-     //right: 8%;
-     //width: 100%;
-     //aspect-ratio: 1 / 2;
-     //background-color: rgb(114, 88, 73);
-     //border-radius: 50%/ 25%;
- }
-
-&__face {
-     width: 85%;
-     justify-content: center;
-     position: absolute;
-     display: flex;
-     flex-wrap: wrap;
-     top: 13%;
-     left: 48%;
-     transform: translateX(-50%);
- }
-}
-
-//.goal {
-  //  position: absolute;
-  //  top: 100%;
-  //  left: 16px;
-  //  right: 23px;
-  //  bottom: 7px;
-  //  z-index: 5;
-  //  background-color: #00000000;
-  //}
-
-//.mole
-
-
-  .eye {
-      width: 27%;
-      aspect-ratio: 1;
-
-      clip-path: circle(50%);
-      background-color: #222;
-      position: relative;
-
-&:first-child {
-     margin-right: 10%;
- }
-
-&::after {
-     content: "";
-     width: 35%;
-     height: 35%;
-     position: absolute;
-     top: 10%;
-     left: 10%;
-     clip-path: circle(50%);
-     background-color: #fff;
- }
-}
-
-.nose {
-    width: 100%;
-    aspect-ratio: 3 / 1;
-    overflow: hidden;
-    position: relative;
-
-&::before {
-     content: "";
-     transform: rotate(45deg);
-     background-color: silver;
-     width: 25%;
-     aspect-ratio:1;
-     top: -17%;
-     left: calc(50% - 12.5%);
-     position: absolute;
-     border-radius: .3em;
-     background-color: rgb(60, 59, 61);
- }
-}
-
-.mustaches {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-
-    overflow: visible;
     position: absolute;
-    top: 50%;
-
-&>span {
-     position: relative;
-     width: 40%;
-     overflow: visible;
- }
-}
-
-hr {
-    width: 100%;
-    border: none;
-    height: 2px;
-    background-color: #fff;
-}
-
-.left>.a {
-    position: relative;
-    top: -60%;
-    left: -10px;
-    transform: rotate(15deg);
-}
-
-.left>.b {
-    position: relative;
-    top: -60%;
-    left: -11px;
-
-}
-
-.left>.c {
-    position: relative;
-    top: -58%;
-    left: -10px;
-    transform: rotate(-15deg);
-}
-
-
-.right>.a {
-    position: relative;
-    top: -60%;
-    left: 4px;
-    transform: rotate(-15deg);
-}
-
-.right>.b {
-    position: relative;
-    top: -60%;
-    left: 4px;
-}
-
-.right>.c {
-    position: relative;
-    top: -58%;
-    left: 2px;
-    transform: rotate(15deg);
-}
-
-.mouth {
-    width: 2em;
-    height: 1em;
-    margin: 0 auto;
-    background-color: rgb(237, 84, 112);
-    border-radius: 0% 0% 50% 50%;
-    position: relative;
-    overflow: visible;
-
-&::before {
-     content: "";
-     width: 1.4em;
-     height: 1.6em;
-     position: absolute;
-     top: 0;
-     left: 50%;
-     transform: translateX(-50%);
-     background-color: #fff;
-
-&::after {
-     content: "";
-     width: 1px;
-     height: 1.6em;
-     position: absolute;
-     top: 0;
-     left: 50%;
-     transform: translateX(-50%);
-     background-color: #ccc;
- }
-}
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 @keyframes moveMole {
@@ -201,20 +23,6 @@ hr {
     }
 }
 
-//@keyframes moveGoal {
-//  0% {
-//    top: 80%;
-//  }
-//
-//  50% {
-//    top: 40px;
-//  ;
-//  }
-//
-//  100% {
-//    top: 100%;
-//  }
-//}
 
 /* ______ missed _______ */
 
@@ -285,7 +93,7 @@ hr {
 
 @keyframes caught-animation {
     0% {
-        left: 0px;
+        left: 0;
         z-index: 2;
         transform: rotateY(0deg);
     }
@@ -306,7 +114,6 @@ hr {
 
     90% {
         transform: rotateY(180deg);
-
     }
 
     99% {
@@ -314,6 +121,10 @@ hr {
     }
 
     100% {
-        left: 0px;
+        left: 0
     }
 }
+
+// ____________ SVG _______________
+
+.cls-1{fill:#574338;}.cls-2{fill:#725849;}.cls-3{fill:#fff;}.cls-4{fill:#3c3b3d;}.cls-5,.cls-7{fill:none;stroke-miterlimit:10;stroke-width:2px;}.cls-5{stroke:#fff;}.cls-6{fill:#ed5470;}.cls-7{stroke:gray;}

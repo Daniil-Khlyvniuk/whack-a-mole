@@ -1,0 +1,64 @@
+.formWrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: #000000cc;
+}
+
+
+.form {
+  padding: 25px;
+  text-align: center;
+  width: 350px;
+  background-color: rgba(253, 165, 64, .9);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100000;
+  border: solid rgb(69, 56, 50) 5px;
+  border-radius: 2em;
+
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgb(46, 40, 37);
+
+  &>button {
+    background-color: rgb(255, 50, 100);
+    padding: 200px;
+    line-height: 1.6;
+    border: none;
+    border-radius: .5em;
+    padding: 5px 10px;
+    font-size: 25px;
+    color: rgb(46, 40, 37);
+    display: block;
+    margin: 1em auto;
+  }
+
+    h2 {
+      margin: 0;
+    }
+
+  label{
+    margin-right: .5em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.form,
+.form>* {
+  cursor: initial;
+}
+
+.form>label>input,
+.form>label,
+.form>button {
+  font-weight: bold;
+  cursor: pointer;
+}

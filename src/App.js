@@ -27,7 +27,9 @@ function App() {
             <Form  cb={handleSubmit} didStarted={started} titleText={"Welcome to the"} supTitleText={"\"Whack" +
             " a mole\"!"} btnText={"Start"}
                    text={"Please choose the difficulty level"}/>}
-            { started && <GameAria/>}
+            { started &&
+            <GameAria/>
+            }
         </div>
     );
 }

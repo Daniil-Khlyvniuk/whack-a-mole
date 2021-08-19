@@ -1,11 +1,12 @@
 import React from 'react';
 import HoleWrapper from "./HoleWrapper";
 import "./_gameAria.scss"
-
+import Lifes from "../Lifes/Lifes"
 
 const GameAria = () => {
     return (
         <div id={"game-aria"}>
+            <Lifes/>
             <div id={"hole-field"}>
                 {
                     [...Array(15)]

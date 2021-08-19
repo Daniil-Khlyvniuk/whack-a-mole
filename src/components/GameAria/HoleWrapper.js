@@ -1,13 +1,15 @@
 import React from 'react';
-import "./gameAria.scss"
+import "./_gameAria.scss"
+import Mole from "../Mole/Mole";
 
 const HoleWrapper = () => {
     return (
             <div className={"hole-wrapper"}>
-                <div className={"goal"} datacanbeactive="true"></div>
-                <div className={"hole"} datacanbeactive="true"></div>
-                <div className={"overlap"} datacanbeactive="true"></div>
-                <div className={"overlap_1"} datacanbeactive="true"></div>
+                <Mole />
+                <div className={"goal"} />
+                <div className={"hole"} />
+                <div className={"overlap"} />
+                <div className={"overlap_1"} />
             </div>
     );
 };

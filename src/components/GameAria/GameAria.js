@@ -1,6 +1,6 @@
 import React from 'react';
 import HoleWrapper from "./HoleWrapper";
-import "./gameAria.scss"
+import "./_gameAria.scss"
 
 
 const GameAria = () => {

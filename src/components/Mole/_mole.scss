@@ -1,0 +1,319 @@
+.mole {
+    //margin: 0 auto;
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+    //aspect-ratio: 1 / 2;
+    //background-color: rgb(87, 67, 56);
+    //border-radius: 50% / 25%;
+    position: relative;
+//transform: translateY(90px);
+    z-index: 1;
+
+&::before {
+     //content: "";
+     //position: absolute;
+     //top: 0;
+     //right: 8%;
+     //width: 100%;
+     //aspect-ratio: 1 / 2;
+     //background-color: rgb(114, 88, 73);
+     //border-radius: 50%/ 25%;
+ }
+
+&__face {
+     width: 85%;
+     justify-content: center;
+     position: absolute;
+     display: flex;
+     flex-wrap: wrap;
+     top: 13%;
+     left: 48%;
+     transform: translateX(-50%);
+ }
+}
+
+//.goal {
+  //  position: absolute;
+  //  top: 100%;
+  //  left: 16px;
+  //  right: 23px;
+  //  bottom: 7px;
+  //  z-index: 5;
+  //  background-color: #00000000;
+  //}
+
+//.mole
+
+
+  .eye {
+      width: 27%;
+      aspect-ratio: 1;
+
+      clip-path: circle(50%);
+      background-color: #222;
+      position: relative;
+
+&:first-child {
+     margin-right: 10%;
+ }
+
+&::after {
+     content: "";
+     width: 35%;
+     height: 35%;
+     position: absolute;
+     top: 10%;
+     left: 10%;
+     clip-path: circle(50%);
+     background-color: #fff;
+ }
+}
+
+.nose {
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    overflow: hidden;
+    position: relative;
+
+&::before {
+     content: "";
+     transform: rotate(45deg);
+     background-color: silver;
+     width: 25%;
+     aspect-ratio:1;
+     top: -17%;
+     left: calc(50% - 12.5%);
+     position: absolute;
+     border-radius: .3em;
+     background-color: rgb(60, 59, 61);
+ }
+}
+
+.mustaches {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    overflow: visible;
+    position: absolute;
+    top: 50%;
+
+&>span {
+     position: relative;
+     width: 40%;
+     overflow: visible;
+ }
+}
+
+hr {
+    width: 100%;
+    border: none;
+    height: 2px;
+    background-color: #fff;
+}
+
+.left>.a {
+    position: relative;
+    top: -60%;
+    left: -10px;
+    transform: rotate(15deg);
+}
+
+.left>.b {
+    position: relative;
+    top: -60%;
+    left: -11px;
+
+}
+
+.left>.c {
+    position: relative;
+    top: -58%;
+    left: -10px;
+    transform: rotate(-15deg);
+}
+
+
+.right>.a {
+    position: relative;
+    top: -60%;
+    left: 4px;
+    transform: rotate(-15deg);
+}
+
+.right>.b {
+    position: relative;
+    top: -60%;
+    left: 4px;
+}
+
+.right>.c {
+    position: relative;
+    top: -58%;
+    left: 2px;
+    transform: rotate(15deg);
+}
+
+.mouth {
+    width: 2em;
+    height: 1em;
+    margin: 0 auto;
+    background-color: rgb(237, 84, 112);
+    border-radius: 0% 0% 50% 50%;
+    position: relative;
+    overflow: visible;
+
+&::before {
+     content: "";
+     width: 1.4em;
+     height: 1.6em;
+     position: absolute;
+     top: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: #fff;
+
+&::after {
+     content: "";
+     width: 1px;
+     height: 1.6em;
+     position: absolute;
+     top: 0;
+     left: 50%;
+     transform: translateX(-50%);
+     background-color: #ccc;
+ }
+}
+}
+
+@keyframes moveMole {
+    0% {
+        transform: translateY(130px);
+    }
+
+    50% {
+        transform: translateY(40px);
+    }
+
+    100% {
+        transform: translateY(130px);
+    }
+}
+
+//@keyframes moveGoal {
+//  0% {
+//    top: 80%;
+//  }
+//
+//  50% {
+//    top: 40px;
+//  ;
+//  }
+//
+//  100% {
+//    top: 100%;
+//  }
+//}
+
+/* ______ missed _______ */
+
+.off {
+    --anim-delay: 0;
+    position: relative;
+}
+
+.off::after {
+    content: "";
+    position: absolute;
+    border-radius: 50% / 25%;
+    top: -1px;
+    left: -10px;
+    bottom: 0;
+    right: -1px;
+    animation: off .1s cubic-bezier(0, 0.2, 0.8, 1) 1 forwards;
+    animation-delay: var(--anim-delay);
+}
+
+@keyframes off {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, .6);
+    }
+}
+
+/* ______ caught _______ */
+
+.anim-wrapper {
+    display: none;
+}
+
+.mole[data-is-caught="true"]>.anim-wrapper {
+    display: block;
+}
+
+.star {
+    top: -15px;
+    display: inherit;
+    position: absolute;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    background-color: rgb(255, 246, 102);
+    width: 25px;
+    height: 25px;
+    animation: caught-animation 1.5s ease-in-out infinite;
+}
+
+.star:first-child {
+    animation-delay: 0s;
+}
+
+.star:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.star:nth-child(3) {
+    animation-delay: .4s;
+}
+
+.star:nth-child(4) {
+    animation-delay: .6s;
+}
+
+
+@keyframes caught-animation {
+    0% {
+        left: 0px;
+        z-index: 2;
+        transform: rotateY(0deg);
+    }
+
+    30% {
+        transform: rotateY(0deg);
+    }
+
+    49% {
+        z-index: 2;
+    }
+
+    50% {
+        transform: rotateY(180deg);
+        left: 70px;
+        z-index: 0;
+    }
+
+    90% {
+        transform: rotateY(180deg);
+
+    }
+
+    99% {
+        z-index: -10;
+    }
+
+    100% {
+        left: 0px;
+    }
+}

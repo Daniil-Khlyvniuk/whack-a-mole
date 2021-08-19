@@ -1,3 +1,6 @@
+@import "../global/vars";
+
+
 .formWrapper {
   position: fixed;
   top: 0;
@@ -5,7 +8,18 @@
   bottom: 0;
   left: 0;
 
-  background-color: #000000cc;
+  background-color: $mainYellowColor;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff22;
+  }
+
 }
 
 
@@ -39,9 +53,9 @@
     margin: 1em auto;
   }
 
-    h2 {
-      margin: 0;
-    }
+  h2 {
+    margin: 0;
+  }
 
   label{
     margin-right: .5em;

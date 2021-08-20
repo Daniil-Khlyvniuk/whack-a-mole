@@ -8,8 +8,6 @@
   bottom: 0;
   left: 0;
 
-  background-color: $mainYellowColor;
-
   &::after {
     content: "";
     position: absolute;
@@ -17,7 +15,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #ffffff22;
+    background-color: #00000099;
   }
 
 }
@@ -27,7 +25,7 @@
   padding: 25px;
   text-align: center;
   width: 350px;
-  background-color: rgba(253, 165, 64, .9);
+  background-color: rgb(253, 165, 64);
   position: absolute;
   top: 50%;
   left: 50%;

@@ -9,17 +9,23 @@
     z-index: 1;
 }
 
+.active {
+    animation-name: moveMole;
+    animation-timing-function: cubic-bezier(1,0,0,1);
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+
 @keyframes moveMole {
     0% {
-        transform: translateY(130px);
+        top: 80%;
     }
-
     50% {
-        transform: translateY(40px);
+        top: 0;
     }
-
     100% {
-        transform: translateY(130px);
+        top: 80%;
     }
 }
 

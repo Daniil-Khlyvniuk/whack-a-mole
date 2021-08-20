@@ -3,7 +3,7 @@ import "./_mole.scss"
 
 const Mole = () => {
     return (
-        <svg className="mole" viewBox="0 0 125 324.07">
+        <svg className={"mole"} viewBox="0 0 125 324.07">
             <rect className="cls-1" x="21.41" width="92.59" height="324.07" rx="43.17"/>
             <rect className="cls-2" x="14" width="92.59" height="324.07" rx="43.17"/>
             <ellipse cx="79.26" cy="39.7" rx="11.68" ry="11.44"/>

@@ -5,7 +5,7 @@ import Mole from "../Mole/Mole";
 const HoleWrapper = () => {
     return (
             <div className={"hole-wrapper"}>
-                <Mole />
+                <Mole isActive/>
                 <div className={"goal"} />
                 <div className={"hole"} />
                 <div className={"overlap"} />

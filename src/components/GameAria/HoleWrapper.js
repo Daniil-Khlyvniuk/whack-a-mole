@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./_gameAria.scss"
 import Mole from "../Mole/Mole";
+import { useDispatch, useSelector } from "react-redux";
+import Goal from "../Goal/Goal";
 
 const HoleWrapper = ({ id }) => {
+  const active = useSelector(({ game }) => game.gamePlay.activeMole)
+
   return (
     <div className={ "hole-wrapper" }>
       <Mole id={ id }/>
-      <div className={ "goal" }/>
+      {
+        active === id
+        &&
+        <Goal id={ id }/>
+      }
+      {/*<div id={ id } onMouseDown={ catching } className={ active === id ? "goal active" : "goal" }/>*/}
       <div className={ "hole" }/>
       <div className={ "overlap" }/>
       <div className={ "overlap_1" }/>

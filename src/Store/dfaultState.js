@@ -7,6 +7,7 @@ const defaultState = {
   game: {
     gamePlay: {
       MoleID: [1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13],
+      caughtMole: -1,
       activeMole: null,
       DifficultyLevel: null,
       score: 0,

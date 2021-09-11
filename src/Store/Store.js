@@ -5,14 +5,11 @@ import defaultState from "./dfaultState";
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case "SET_DIFFICULTY_LEVEL":
-      return { ...state, gamePlay: { ...state.gamePlay, difficultyLevel: action.payload } }
-
+      return { ...state, game: { ...state.game, difficultyLevel: action.payload } }
     case "START_GAME":
       return { ...state, game: { ...state.game, isPlaying: action.payload } }
-
     case "SET_ACTIVE_MOLE":
-      return { ...state, gamePlay: { ...state.gamePlay, activeMole: action.payload } }
-
+      return { ...state, game: { ...state.game, gamePlay: { ...state.game.gamePlay, activeMole: action.payload } } }
     default:
       return state
   }

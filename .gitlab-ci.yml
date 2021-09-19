@@ -2,29 +2,29 @@ stages:
   - build
   - deploy
 
-# build:
-#   image: node:14.17.5    
-#   stage: build
+build:
+  image: node:14.17.5    
+  stage: build
   
-#   variables: 
-#     PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
-#   script:
-#     - npm install      
-#     - npm run build
-#   artifacts:
-#     paths:
-#       - build/  
+  variables: 
+    PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
+  script:
+    - npm install      
+    - npm run build
+  artifacts:
+    paths:
+      - build/  
 
-  pages:
-    image: alpine:latest
-    stage: deploy
+  # pages:
+  #   image: alpine:latest
+  #   stage: deploy
   
-    variables:
-      GIT_STRATEGY: none        # Do not clone git repo
-    script:
-      # Rename the CRA `build` folder to `public`
-      - mv build public         
-    artifacts:
-      paths:
-        - public
+  #   variables:
+  #     GIT_STRATEGY: none        # Do not clone git repo
+  #   script:
+  #     # Rename the CRA `build` folder to `public`
+  #     - mv build public         
+  #   artifacts:
+  #     paths:
+  #       - public
 

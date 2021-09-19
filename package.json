@@ -41,5 +41,6 @@
   },
   "devDependencies": {
     "node-sass": "^6.0.1"
-  }
+  },
+  "proxy": "https://daniil_khlyvniuk.gitlab.io/"
 }

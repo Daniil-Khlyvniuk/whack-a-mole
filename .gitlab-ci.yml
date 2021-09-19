@@ -3,7 +3,7 @@ stages:
   - deploy
 
 build:
-  image: node:14.17.5    
+  image: node:latest
   stage: build
   
   variables: 

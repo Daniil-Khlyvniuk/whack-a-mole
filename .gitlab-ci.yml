@@ -6,11 +6,10 @@ build:
   image: node:latest    
   stage: build
   variables: 
-    # Replace this with your site URL
     PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/ 
   script:
-    - yarn install      
-    - yarn build
+    - npm install      
+    - npm run build
   artifacts:
     paths:
       - build/  

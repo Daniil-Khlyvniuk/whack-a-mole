@@ -9,7 +9,7 @@ build:
   variables: 
     PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
   script:
-    - npm install      
+    - npm i     
     - npm run build
   artifacts:
     paths:
@@ -20,9 +20,8 @@ pages:
   stage: deploy
 
   variables:
-    GIT_STRATEGY: none        # Do not clone git repo
+    GIT_STRATEGY: none        
   script:
-    # Rename the CRA `build` folder to `public`
     - mv build public         
   artifacts:
     paths:

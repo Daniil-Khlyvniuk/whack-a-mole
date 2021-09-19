@@ -1,28 +1,21 @@
 stages:
   - build
-  - deploy
+  - test
 
 build:
-  image: node:latest
   stage: build
-  
-  variables: 
-    PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
-  script:
-    - npm i     
-    - npm run build
-  artifacts:
-    paths:
-      - build/  
+  image: node
+  script: 
+    - echo "Start building App"
+    - npm install
+    - npm build
+    - echo "Build successfully!"
 
-pages:
-  image: alpine:latest
-  stage: deploy
-
-  variables:
-    GIT_STRATEGY: none        
+test:
+  stage: test
+  image: node
   script:
-    - mv build public         
-  artifacts:
-    paths:
-      - public
+    - echo "Testing App"
+    - npm install
+    - CI=true npm test
+    - echo "Test successfully!"

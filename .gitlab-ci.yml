@@ -6,7 +6,7 @@ build:
   image: node:latest    
   stage: build
   variables: 
-    PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/ 
+    PUBLIC_URL: "https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/"
   script:
     - npm install      
     - npm run build

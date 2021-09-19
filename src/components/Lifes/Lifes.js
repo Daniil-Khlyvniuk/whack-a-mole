@@ -1,7 +1,7 @@
 import React from 'react';
 import "./lifes.scss"
 
-const Lifes = () => {
+const Lives = () => {
     return (
         <div className="lifeWrapper">
             <div className="heart"/>
@@ -11,4 +11,4 @@ const Lifes = () => {
     );
 };
 
-export default Lifes;
+export default Lives;

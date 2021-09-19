@@ -1,13 +1,13 @@
 import React from 'react';
 import HoleWrapper from "./HoleWrapper";
 import "./_gameAria.scss"
-import Lifes from "../Lifes/Lifes"
+import Lives from "../Lifes/Lifes"
 import Score from "../Score/Score";
 
 const GameAria = () => {
   return (
     <div id={ "game-aria" }>
-      <Lifes/>
+      <Lives/>
       <Score/>
       <div id={ "hole-field" }>
         {

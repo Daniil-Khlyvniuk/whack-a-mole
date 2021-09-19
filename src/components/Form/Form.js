@@ -1,29 +1,24 @@
 import "./_form.scss"
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 
 
-
-
-
-
-const Form = ({ titleText, supTitleText, btnText, text, cb }) => {
-  const didStarted = useSelector(({game}) => game.isPlaying)
-  const startGame = useDispatch()
-  const setLevel = useDispatch()
-  let choosenLevel
+const Form = ({ titleText, supTitleText, btnText, text }) => {
+  const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
+  const dispatch = useDispatch()
+  let chosenLevel
 
   const setDifficultyLevel = (ev) => {
     ev.preventDefault()
-    if (!choosenLevel) return
-    console.log(choosenLevel);
-    setLevel({type: "SET_DIFFICULTY_LEVEL", payload: choosenLevel})
-    startGame({type: "START_GAME", payload: true})
+    if (!chosenLevel) return
+    dispatch(gamePlayActions.setDifficultyLevel(chosenLevel))
+    dispatch(gamePlayActions.setIsPlaying(true))
+    dispatch(gamePlayActions.setIsLoading(false))
   }
 
   const handleChange = (ev) => {
-    console.log("change")
-    choosenLevel = ev.target.value
+    chosenLevel = ev.target.value
   }
 
 

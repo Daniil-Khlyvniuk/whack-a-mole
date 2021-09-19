@@ -3,9 +3,10 @@ import "./_gameAria.scss"
 import Mole from "../Mole/Mole";
 import { useDispatch, useSelector } from "react-redux";
 import Goal from "../Goal/Goal";
+import { moleSelectors } from "../../Store/mole";
 
 const HoleWrapper = ({ id }) => {
-  const active = useSelector(({ game }) => game.gamePlay.activeMole)
+  const active = useSelector(moleSelectors.getActiveMole())
 
   return (
     <div className={ "hole-wrapper" }>

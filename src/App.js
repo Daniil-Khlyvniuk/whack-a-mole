@@ -3,26 +3,24 @@ import Form from "./components/Form/Form";
 import GameAria from "./components/GameAria/GameAria";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import gamePlay from "./components/GamePlay/GamePlay";
+import { gamePlaySelectors } from "./Store/gamePlay";
+import { moleActions } from "./Store/mole";
+import getRandomActiveMole from "./components/getRandomActiveMole/getRandomActiveMole";
 
 
 function App() {
-  const didStarted = useSelector(({ game }) => game.isPlaying)
-  const lives = useSelector(({ game }) => game.gamePlay.lives)
+  const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
+  const lives = useSelector(gamePlaySelectors.getLives())
+  const dispatch = useDispatch();
 
-  const speed = useSelector(({ game }) => game.gamePlay.speed)
-  const MoleIDs = useSelector(({ game }) => game.gamePlay.MoleID)
-  const setActiveMole = useDispatch()
-  // const gamePlay1 = gamePlay.bind(null, [setActiveMole, MoleIDs, speed])
-  let timer
   useEffect(() => {
-    if (didStarted) {
-      let timer = setInterval(() => gamePlay(setActiveMole, MoleIDs, speed), 1400)
-    }
-    if (lives < 1) clearInterval(timer)
-  }, [ didStarted,speed,
-    MoleIDs,
-    setActiveMole ])
+    if (!didStarted) return
+
+    setInterval(() => {
+      dispatch(moleActions.setActiveMole(getRandomActiveMole()))
+    }, 2000)
+
+  }, [ didStarted ])
 
   return (
     <div className="App">

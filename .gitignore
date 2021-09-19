@@ -10,6 +10,9 @@
 
 .idea/**/*
 
+packege-lock.json
+
+
 # production
 /build
 

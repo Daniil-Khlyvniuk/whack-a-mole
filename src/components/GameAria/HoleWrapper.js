@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./_gameAria.scss"
 import Mole from "../Mole/Mole";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Goal from "../Goal/Goal";
 import { moleSelectors } from "../../Store/mole";
 
@@ -16,7 +16,6 @@ const HoleWrapper = ({ id }) => {
         &&
         <Goal id={ id }/>
       }
-      {/*<div id={ id } onMouseDown={ catching } className={ active === id ? "goal active" : "goal" }/>*/}
       <div className={ "hole" }/>
       <div className={ "overlap" }/>
       <div className={ "overlap_1" }/>

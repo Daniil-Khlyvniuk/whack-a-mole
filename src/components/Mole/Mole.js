@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./_mole.scss"
 import MoleSVG from "../Images/MoleSVG";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { moleSelectors } from "../../Store/mole";
 
 const Mole = ({id}) => {

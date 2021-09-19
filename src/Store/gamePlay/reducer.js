@@ -47,6 +47,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         lives: state.lives - action.payload
       }
+
     default:
       return state;
   }

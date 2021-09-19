@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import "../GameAria/_gameAria.scss"
-import { gamePlayActions } from "../../Store/gamePlay";
+import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { moleActions, moleSelectors } from "../../Store/mole";
 
 const Goal = ({ id }) => {
   let [ caught, setCaught ] = useState(false)
   let [ caughtID, setCaughtID ] = useState(-1)
+  const lives = useSelector(gamePlaySelectors.getLives())
   // let caughtID = useSelector(moleSelectors.getCaughtMole())
   const activeMole = useSelector(moleSelectors.getActiveMole())
   const dispatch = useDispatch();
 
 
-  console.log(caughtID, activeMole, id)
-
-
   useEffect(() => {
     return () => {
-      if (caughtID === activeMole) console.log("===")
-      if (caughtID !== activeMole) console.log("!==")
+      if (caught && activeMole === caughtID) {
+       return dispatch(gamePlayActions.setLives(1))
+      }
     }
   }, [])
+
+  useEffect(() => {
+    if (lives < 1) {
+      dispatch(gamePlayActions.setIsPlaying(false))
+    }
+  }, [ lives ])
 
   const catching = () => {
     setCaught(true)
@@ -30,7 +35,7 @@ const Goal = ({ id }) => {
   }
 
   const liveIncrement = () => {
-    if (caughtID !== id) {
+    if (!caught) {
       dispatch(gamePlayActions.setLives(1))
     }
   }

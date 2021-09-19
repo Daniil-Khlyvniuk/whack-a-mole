@@ -20,9 +20,9 @@ const setIsLoading = (isLoading) => ({
   payload: isLoading
 })
 
-const setLives = () => ({
+const setLives = (decrement) => ({
   type: types.SET_LIVES,
-  payload: 1
+  payload: decrement
 })
 
 const setSpeed = (speed) => ({

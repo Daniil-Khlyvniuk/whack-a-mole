@@ -9,15 +9,15 @@ build:
   variables: 
     PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
   script:
-    - npm i     
-    - npm run build
+    - npm install     
+    - npm build
   artifacts:
     paths:
       - build/  
       - node_modules/
 
 pages:
-  image: alpine:latest
+  image: alpine
   stage: deploy
 
   variables:

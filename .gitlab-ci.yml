@@ -1,6 +1,7 @@
 stages:
   - build
   - deploy
+  - pages
 
 build:
   image: node:latest   

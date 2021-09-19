@@ -10,7 +10,7 @@ build:
     PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
   script:
     - npm install     
-    - npm build
+    - npm run build
   artifacts:
     paths:
       - build/  

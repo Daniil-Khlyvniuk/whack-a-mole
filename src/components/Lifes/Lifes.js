@@ -5,13 +5,11 @@ import { gamePlaySelectors } from "../../Store/gamePlay";
 
 const Lives = () => {
 	const lives = useSelector(gamePlaySelectors.getLives())
-	console.log(Array(lives, ""));
+	const hearts = lives > 0 ? Array(lives).fill("").map((el, index) => (<div key={ index } className="heart"/>)) : []
 	return (
 		<div className="lifeWrapper">
 			{
-				lives > 0
-				&&
-				Array(lives).fill("").map((el, index) => (<div key={ index } className="heart"/>))
+				hearts
 			}
 		</div>
 	);

@@ -5,7 +5,7 @@
     position: absolute;
     top: 80%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, 0);
     z-index: 1;
 
     svg {
@@ -13,25 +13,28 @@
     }
 }
 
-.active {
-    animation-name: moveMole;
-    animation-timing-function: cubic-bezier(1,0,0,1);
-    animation-duration: 2s;
-    animation-iteration-count: 1;
+.mole-enter{
+
 }
 
+.mole-enter-active {
 
-@keyframes moveMole {
-    0% {
-        top: 80%;
-    }
-    50% {
-        top: 0;
-    }
-    100% {
-        top: 80%;
-    }
 }
+
+//.active {
+//  animation-name: moveMole;
+//  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+//  animation-duration: 2s;
+//  animation-iteration-count: 1;
+//  //animation: moveMole 1s forwards;
+//}
+
+
+  .test{
+    animation: 1s cubic-bezier(1,0,0,1) 1 forwards moveMole;
+  }
+
+
 
 
 /* ______ missed _______ */

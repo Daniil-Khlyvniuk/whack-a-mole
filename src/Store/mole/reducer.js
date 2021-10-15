@@ -9,17 +9,24 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.SET_ACTIVE_MOLE:
-
-      return {
+      return  {
         ...state,
         activeMole: action.payload,
-        test: action.payload === -1 ? state.updateTrigger : (!state.updateTrigger)
+	      updateTrigger: action.payload === state.activeMole ? state.updateTrigger : (!state.updateTrigger)
       }
       case types.SET_CAUGHT_MOLE:
       return {
         ...state,
         caughtMole: action.payload
       }
+
+	  case types.SET_UPDATE_TRIGGER:
+			return {
+				...state,
+				updateTrigger: !state.updateTrigger
+			}
+
+
     default:
       return state;
   }

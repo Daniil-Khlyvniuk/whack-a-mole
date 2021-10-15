@@ -1,27 +1,33 @@
 import React from 'react';
 import HoleWrapper from "./HoleWrapper";
 import "./_gameAria.scss"
+import "../Mole/_mole.scss"
+import "../Mole/animation.css"
 import Lives from "../Lifes/Lifes"
 import Score from "../Score/Score";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const GameAria = () => {
-  return (
-    <div id={ "game-aria" }>
-      <Lives/>
-      <Score/>
-      <div id={ "hole-field" }>
-        {
-          [ ...Array(15) ].map((e, i) =>
-              [ 0, 4, 10, 14 ].includes(i)
-                ?
-              <div key={ i }/>
-                :
-              <HoleWrapper id={i} key={ i }/>
-          )
-        }
-      </div>
-    </div>
-  );
+
+
+	const holes = [ ...Array(15) ].map((e, i) =>
+		[ 0, 4, 10, 14 ].includes(i)
+			?
+			<div key={ i }/>
+			:
+			<HoleWrapper key={ i } id={ i }/>
+	)
+
+	return (
+		<div id={ "game-aria" }>
+			<Lives/>
+			<Score/>
+			<TransitionGroup component={ "div" } id={ "hole-field" }>
+				{ holes }
+			</TransitionGroup>
+		</div>
+	);
 };
+
 
 export default GameAria;

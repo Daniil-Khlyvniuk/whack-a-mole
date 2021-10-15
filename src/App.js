@@ -23,10 +23,10 @@ function App() {
 
 		setTimeout(() => {
 			const activeId = getRandomActiveMole()
-			console.log(activeMole === activeId)
-			console.log(activeMole)
-			console.log(activeId)
-			console.log("updateTrigger", updateTrigger);
+			// console.log(activeMole === activeId)
+			// console.log(activeMole)
+			// console.log(activeId)
+			// console.log("updateTrigger", updateTrigger);
 			// if (activeId === activeMole) {
 			// 	return dispatch(moleActions.setActiveMole(activeId.toString()))
 			// }

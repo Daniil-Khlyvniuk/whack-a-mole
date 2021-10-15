@@ -1,14 +1,20 @@
 import React from 'react';
 import "./lifes.scss"
+import { useSelector } from "react-redux";
+import { gamePlaySelectors } from "../../Store/gamePlay";
 
 const Lives = () => {
-    return (
-        <div className="lifeWrapper">
-            <div className="heart"/>
-            <div className="heart"/>
-            <div className="heart"/>
-        </div>
-    );
+	const lives = useSelector(gamePlaySelectors.getLives())
+	console.log(Array(lives, ""));
+	return (
+		<div className="lifeWrapper">
+			{
+				lives > 0
+				&&
+				Array(lives).fill("").map((el, index) => (<div key={ index } className="heart"/>))
+			}
+		</div>
+	);
 };
 
 export default Lives;

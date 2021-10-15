@@ -15,18 +15,9 @@ const Goal = ({ id }) => {
 	const isActive = useSelector(moleSelectors.getActiveMole()) === id
 	const speed = useSelector(gamePlaySelectors.getSpeed())
 
-	useEffect(() => () => {
-		setCaught(true)
-		// if (caught && activeMole === caughtID) {
-		//  return dispatch(gamePlayActions.setLives(1))
-		// }
-	}, [])
-
-	// useEffect(() => {
-	//   if (lives < 1) {
-	//     dispatch(gamePlayActions.setIsPlaying(false))
-	//   }
-	// }, [ lives ])
+	useEffect(() => {
+		if (lives < 1) dispatch(gamePlayActions.setIsPlaying(false))
+	}, [ lives ])
 
 	const catching = () => {
 		setCaught(true)
@@ -35,7 +26,10 @@ const Goal = ({ id }) => {
 		setTimeout(() => {
 			setCaught(false)
 		}, speed)
-		// setCaughtID(id)
+	}
+	const handleExit = () => {
+		if (caught) return
+		dispatch(gamePlayActions.setLives(1))
 	}
 
 	// const liveIncrement = () => {
@@ -55,6 +49,7 @@ const Goal = ({ id }) => {
 						in={ isActive }
 						timeout={ speed }
 						className={ "goal" }
+						onExited={ handleExit }
 					>
 						<div
 							onMouseDown={ catching }

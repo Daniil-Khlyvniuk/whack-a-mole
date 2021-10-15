@@ -4,8 +4,34 @@
 /*  !*animation-duration: 2s;*!*/
 /*  !*animation-iteration-count: 1;*!*/
 
-/*  animation: .5s cubic-bezier(1,0,0,1) infinite forwards moveMole;*/
+/*  animation: 1s cubic-bezier(1,0,0,1) 1 forwards moveMole;*/
 /*}*/
+
+/*.mole.entering {*/
+/*  animation: 1s cubic-bezier(1,0,0,1) 1 forwards moveMole;*/
+/*}*/
+
+/*.mole.entered {*/
+/*  top: 0*/
+/*}*/
+
+/*.mole.exiting {*/
+/*  animation: 1s cubic-bezier(1,0,0,1) 1 backwards moveMole;*/
+/*}*/
+
+/*.mole.exited {*/
+/*  top: 80%*/
+/*}*/
+
+
+/*.mole.entered{*/
+/*  top: 0;*/
+/*}*/
+/*.mole.exiting{*/
+/*  animation: .5s cubic-bezier(1,0,0,1) 1 reverse moveMole;*/
+/*}*/
+
+
 /*.remove-btn {*/
 /*  margin-right: 0.5rem;*/
 /*}*/
@@ -25,33 +51,35 @@
 /*  transition: opacity 500ms ease-in;*/
 /*}*/
 
+
+/*_________________________________________*/
+/*CSSTransition*/
+
+
 .mole.enter {
   top: 80%;
-  transition: top .5s cubic-bezier(1,0,0,1);
+  transition: top .5s cubic-bezier(1, 0, 0, 1);
   /*animation: .5s cubic-bezier(1,0,0,1) infinite moveMole;*/
 }
 
 .mole.enter-active {
   top: 0;
-  transition: top .5s cubic-bezier(1,0,0,1);
+  transition: top .5s cubic-bezier(1, 0, 0, 1);
 }
 
 .mole.exit {
   top: 0;
-  transition: top .5s cubic-bezier(1,0,0,1);
+  transition: top .5s cubic-bezier(1, 0, 0, 1);
 }
 
 .mole.exit-active {
   top: 80%;
-  transition: top .5s cubic-bezier(1,0,0,1);
+  transition: top .5s cubic-bezier(1, 0, 0, 1);
 }
 
-/*.mole.entered{*/
-/*  top: 0;*/
-/*}*/
-/*.mole.exiting{*/
-/*  animation: .5s cubic-bezier(1,0,0,1) 1 reverse moveMole;*/
-/*}*/
+
+/*____________________________________________________*/
+
 
 /*.mole.exited{*/
 /*animation-name: moveMole;*/
@@ -64,15 +92,13 @@
 @keyframes moveMole {
   0% {
     top: 80%;
-    /*transform: translate(-50%, 80%);*/
   }
-  50% {
-    top: 0;
-    /*transform: translate(-50%, 0%);*/
+  /*50% {*/
+  /*  top: 0;*/
+  /*  !*transform: translate(-50%, 0%);*!*/
 
-  }
+  /*}*/
   100% {
     top: 80%;
-    /*transform: translate(-50%, 0);*/
   }
 }

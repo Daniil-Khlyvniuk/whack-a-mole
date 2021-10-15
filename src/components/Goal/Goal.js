@@ -3,58 +3,69 @@ import "../GameAria/_gameAria.scss"
 import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { moleActions, moleSelectors } from "../../Store/mole";
+import { CSSTransition } from "react-transition-group";
 
 const Goal = ({ id }) => {
-  let [ caught, setCaught ] = useState(false)
-  let [ caughtID, setCaughtID ] = useState(-1)
-  const lives = useSelector(gamePlaySelectors.getLives())
-  // let caughtID = useSelector(moleSelectors.getCaughtMole())
-  const activeMole = useSelector(moleSelectors.getActiveMole())
-  const dispatch = useDispatch();
+	let [ caught, setCaught ] = useState(false)
+	let [ caughtID, setCaughtID ] = useState(-1)
+	const lives = useSelector(gamePlaySelectors.getLives())
+	// let caughtID = useSelector(moleSelectors.getCaughtMole())
+	const activeMole = useSelector(moleSelectors.getActiveMole())
+	const dispatch = useDispatch();
+	const isActive = useSelector(moleSelectors.getActiveMole()) === id
+	const speed = useSelector(gamePlaySelectors.getSpeed())
 
+	useEffect(() => () => {
+		setCaught(true)
+		// if (caught && activeMole === caughtID) {
+		//  return dispatch(gamePlayActions.setLives(1))
+		// }
+	}, [])
 
-  useEffect(() => {
-    return () => {
-      if (caught && activeMole === caughtID) {
-       return dispatch(gamePlayActions.setLives(1))
-      }
-    }
-  }, [])
+	// useEffect(() => {
+	//   if (lives < 1) {
+	//     dispatch(gamePlayActions.setIsPlaying(false))
+	//   }
+	// }, [ lives ])
 
-  useEffect(() => {
-    if (lives < 1) {
-      dispatch(gamePlayActions.setIsPlaying(false))
-    }
-  }, [ lives ])
+	const catching = () => {
+		setCaught(true)
+		dispatch(moleActions.setCaughtMole(id))
+		dispatch(gamePlayActions.setScore(5))
+		setTimeout(() => {
+			setCaught(false)
+		}, speed)
+		// setCaughtID(id)
+	}
 
-  const catching = () => {
-    setCaught(true)
-    setCaughtID(id)
-    dispatch(moleActions.setCaughtMole(id))
-    dispatch(gamePlayActions.setScore(5))
-  }
+	// const liveIncrement = () => {
+	//   if (!caught) {
+	//     dispatch(gamePlayActions.setLives(1))
+	//   }
+	// }
 
-  const liveIncrement = () => {
-    if (!caught) {
-      dispatch(gamePlayActions.setLives(1))
-    }
-  }
+	return (
+		<>
+			{
+				caught
+					?
+					null
+					:
+					<CSSTransition
+						in={ isActive }
+						timeout={ speed }
+						className={ "goal" }
+					>
+						<div
+							onMouseDown={ catching }
+							id={ id }
+							className={ "goal" }
+						/>
+					</CSSTransition>
 
-  return (
-    <>
-      {
-        caught
-          ?
-          null
-          :
-          <div
-            onMouseDown={ catching }
-            id={ id }
-            className={ "goal active" }
-          />
-      }
-    </>
-  )
+			}
+		</>
+	)
 };
 
 

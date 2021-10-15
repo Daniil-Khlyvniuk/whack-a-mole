@@ -11,6 +11,7 @@ function App() {
 	const forceUpdate = useCallback(() => updateState({}), []);
 	const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
+	const speed = useSelector(gamePlaySelectors.getSpeed())
 	const lives = useSelector(gamePlaySelectors.getLives())
 	const activeMole = useSelector(moleSelectors.getActiveMole())
 	const dispatch = useDispatch();
@@ -26,18 +27,23 @@ function App() {
 			console.log(activeMole)
 			console.log(activeId)
 			console.log("updateTrigger", updateTrigger);
-			if (activeId === activeMole) {
-				dispatch(moleActions.setUpdateTrigger())
-			}
+			// if (activeId === activeMole) {
+			// 	return dispatch(moleActions.setActiveMole(activeId.toString()))
+			// }
 			// dispatch(moleActions.setActiveMole(-1))
 			dispatch(moleActions.setActiveMole(activeId))
-		}, 500)
+		}, speed)
 	}, [ didStarted, activeMole, updateTrigger ])
 
 
 	const getRandomActiveMole = () => {
 		const molesIDs = [ 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13 ]
 		let index = Math.floor(Math.random() * molesIDs.length)
+
+		while(molesIDs[index] === activeMole){
+			index = Math.floor(Math.random() * molesIDs.length)
+		}
+		// let index = Math.floor(Math.random() * molesIDs.length)
 
 		return molesIDs[index]
 	}

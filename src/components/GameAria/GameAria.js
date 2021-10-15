@@ -22,7 +22,7 @@ const GameAria = () => {
 		<div id={ "game-aria" }>
 			<Lives/>
 			<Score/>
-			<TransitionGroup component={ "div" } id={ "hole-field" }>
+			<TransitionGroup id={ "hole-field" }>
 				{ holes }
 			</TransitionGroup>
 		</div>

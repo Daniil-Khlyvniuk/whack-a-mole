@@ -2,7 +2,7 @@ import types from "./types";
 
 const initialState = {
   difficultyLevel: null,
-  speed: 0,
+  speed: 700,
   score: 0,
   isPlaying: false,
   isLoading: true,

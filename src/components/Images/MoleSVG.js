@@ -1,8 +1,7 @@
 import React from 'react';
 import "../Mole/_mole.scss"
 
-const MoleSVG = () => {
-  return (
+const MoleSVG = () => (
     <svg  viewBox="0 0 125 324.07">
       <rect className="cls-1" x="21.41" width="92.59" height="324.07" rx="43.17"/>
       <rect className="cls-2" x="14" width="92.59" height="324.07" rx="43.17"/>
@@ -25,6 +24,5 @@ const MoleSVG = () => {
       <line className="cls-7" x1="61.61" y1="72.26" x2="61.61" y2="94.26"/>
     </svg>
   );
-};
 
 export default MoleSVG;

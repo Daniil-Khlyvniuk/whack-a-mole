@@ -96,29 +96,26 @@
   bottom: -25%;
   z-index: 5;
   border-radius: 25%;
-  background-color: #00000000;
-  //background-color: #00000055;
+  //background-color: #00000000;
+  background-color: #00000055;
 }
 
 .goal.enter {
-  top: 80%;
-  transition: top .5s cubic-bezier(1, 0, 0, 1);
-  /*animation: .5s cubic-bezier(1,0,0,1) infinite moveMole;*/
+  top: 100%;
 }
 
 .goal.enter-active {
   top: 0;
-  transition: top .5s cubic-bezier(1, 0, 0, 1);
+  transition: top .7s cubic-bezier(1, 0, 0, 1);
 }
 
 .goal.exit {
   top: 0;
-  transition: top .5s cubic-bezier(1, 0, 0, 1);
 }
 
 .goal.exit-active {
-  top: 80%;
-  transition: top .5s cubic-bezier(1, 0, 0, 1);
+  top: 100%;
+  transition: top .7s cubic-bezier(1, 0, 0, 1);
 }
 
 //.goal.active {

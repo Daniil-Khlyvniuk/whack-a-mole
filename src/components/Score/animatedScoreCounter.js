@@ -7,8 +7,6 @@ import { gamePlaySelectors } from "../../Store/gamePlay";
 const AnimatedScoreCounter = () => {
 	const score = useSelector(gamePlaySelectors.getScore())
 	const [ isChange, setIsChange ] = useState(false)
-	console.log("render")
-	//
 
 	useEffect(() => {
 		if (score < 1) return

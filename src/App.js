@@ -19,28 +19,32 @@ function App() {
 
 	useEffect(() => {
 		if (!didStarted) return
+		const delta = Math.random() * 350
+		// console.log(delta);
 
-
-		setTimeout(() => {
-			const activeId = getRandomActiveMole()
-			// console.log(activeMole === activeId)
-			// console.log(activeMole)
-			// console.log(activeId)
-			// console.log("updateTrigger", updateTrigger);
-			// if (activeId === activeMole) {
-			// 	return dispatch(moleActions.setActiveMole(activeId.toString()))
-			// }
-			// dispatch(moleActions.setActiveMole(-1))
-			dispatch(moleActions.setActiveMole(activeId))
-		}, speed)
+		// test(delta).then(() => {
+			setTimeout(() => {
+				const activeId = getRandomActiveMole()
+				dispatch(moleActions.setActiveMole(activeId))
+			}, +speed)
+		// })
 	}, [ didStarted, activeMole, updateTrigger ])
+
+
+	const test = (delta) => {
+		return new Promise(((resolve, reject) => {
+			setTimeout(() => {
+				resolve();
+			}, +delta);
+		}))
+	}
 
 
 	const getRandomActiveMole = () => {
 		const molesIDs = [ 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13 ]
 		let index = Math.floor(Math.random() * molesIDs.length)
 
-		while(molesIDs[index] === activeMole){
+		while (molesIDs[index] === activeMole) {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
 		// let index = Math.floor(Math.random() * molesIDs.length)

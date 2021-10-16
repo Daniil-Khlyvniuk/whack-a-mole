@@ -1,18 +1,35 @@
-import React from 'react';
+import React, { memo } from 'react';
 import "./lifes.scss"
 import { useSelector } from "react-redux";
 import { gamePlaySelectors } from "../../Store/gamePlay";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Lives = () => {
 	const lives = useSelector(gamePlaySelectors.getLives())
-	const hearts = lives > 0 ? Array(lives).fill("").map((el, index) => (<div key={ index } className="heart"/>)) : []
+
+
 	return (
-		<div className="lifeWrapper">
+		<TransitionGroup className="lifeWrapper">
 			{
-				hearts
+				lives > 0
+					?
+					Array(lives)
+					.fill("")
+					.map((el, index) => (
+						<CSSTransition
+							unmountOnExit
+							key={ index }
+							timeout={ 500 }
+							classNames={ "heart" }
+						>
+							<div className={ "heart" }/>
+						</CSSTransition>
+					))
+					:
+					[]
 			}
-		</div>
+		</TransitionGroup>
 	);
 };
 
-export default Lives;
+export default memo(Lives);

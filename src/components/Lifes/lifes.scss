@@ -15,3 +15,33 @@
   background: url("../../assets/img/header/heart.png") center no-repeat;
   background-size: cover;
 }
+
+.heart-exit {
+  animation: ease-in .2s scale 1 forwards;
+}
+
+.heart-exit-active {
+  opacity: 0;
+  animation: ease-in .3s removingHeart 1 backwards;
+}
+
+
+@keyframes scale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.7);
+  }
+}
+
+@keyframes removingHeart {
+  0% {
+    opacity: 1;
+    transform: scale(1.7);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}

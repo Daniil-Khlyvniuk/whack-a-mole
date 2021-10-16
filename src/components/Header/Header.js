@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Lives from "../Lifes/Lifes"
 
-const Header = () => {
-    return (
+const Header = () => (
         <div>
             <Lives/>
-
         </div>
     );
-};
 
-export default Header;
+export default memo(Header);

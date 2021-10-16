@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import HoleWrapper from "./HoleWrapper";
 import "./_gameAria.scss"
 import "../Mole/_mole.scss"
@@ -30,4 +30,4 @@ const GameAria = () => {
 };
 
 
-export default GameAria;
+export default memo(GameAria);

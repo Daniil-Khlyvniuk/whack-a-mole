@@ -1,8 +1,69 @@
 .score {
   display: flex;
-  p {
-    font-size: 2em;
-    font-weight: bold;
-    color: rgb(255, 50, 100);
+  position: relative;
+}
+
+.score p {
+  font-size: 2em;
+  font-weight: bold;
+  color: rgb(255, 50, 100);
+}
+
+.scoreCounter{
+  margin: .5em auto;
+  font-size: 4em;
+  color: rgb(255, 50, 100);
+  font-weight: bolder;
+}
+
+.scoreCounter.entering {
+  ////animation: .1s cubic-bezier(1, 0, 0, 1) infinite forwards newScore;
+  //color: greenyellow;
+  ////transform: scale(5);
+  //position: absolute;
+  //font-size: 2em;
+  //transition: ease .2s;
+  animation: .25s ease-in 1 forwards newScore;
+}
+
+.scoreCounter.entered {
+  //transform: scale(5);
+  animation: .5s cubic-bezier(1, 0, 0, 1) 1 backwards scoreRotate;
+}
+
+.scoreCounter.exiting {
+  //color: rgb(255, 50, 100);
+  ////transform: scale(5);
+  //font-size: 2em;
+  //transition: ease .2s;
+  animation: .25s ease-in 1 backwards newScore;
+}
+
+.scoreCounter.exited {
+  //animation: .1s cubic-bezier(1, 0, 0, 1) 1 forwards scoreRotate;
+}
+
+//.scoreCounter.entered {
+//  animation: .5s cubic-bezier(1, 0, 0, 1) 1 backwards scoreRotate;
+//}
+//
+
+
+@keyframes newScore {
+  to {
+    font-size: 4.5em;
+    font-weight: bolder;
+  }
+}
+
+@keyframes scoreRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(35deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }

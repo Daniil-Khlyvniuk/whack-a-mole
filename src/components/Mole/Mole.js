@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import "./_mole.scss"
 import "./animation.css"
 import MoleSVG from "../Images/MoleSVG";
@@ -29,4 +29,4 @@ const Mole = ({ id }) => {
 	);
 };
 
-export default Mole;
+export default memo(Mole);

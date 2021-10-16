@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import "../GameAria/_gameAria.scss"
 import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { connect, useDispatch, useSelector } from "react-redux";
@@ -22,7 +22,8 @@ const Goal = ({ id }) => {
 	const catching = () => {
 		setCaught(true)
 		dispatch(moleActions.setCaughtMole(id))
-		dispatch(gamePlayActions.setScore(5))
+		if (lives > 0) dispatch(gamePlayActions.setScore(5))
+
 		setTimeout(() => {
 			setCaught(false)
 		}, speed)
@@ -128,4 +129,4 @@ const Goal = ({ id }) => {
 //   }
 // }
 
-export default Goal;
+export default memo(Goal);

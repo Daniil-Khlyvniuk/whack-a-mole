@@ -56,7 +56,6 @@ const Goal = ({ id }) => {
 							className={ "goal" }
 						/>
 					</CSSTransition>
-
 			}
 		</>
 	)

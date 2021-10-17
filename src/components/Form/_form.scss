@@ -38,7 +38,7 @@
   line-height: 1.6;
   color: rgb(46, 40, 37);
 
-  &>button {
+  & > button {
     background-color: rgb(255, 50, 100);
     line-height: 1.6;
     border: none;
@@ -54,22 +54,106 @@
     margin: 0;
   }
 
-  label{
+  label {
     margin-right: .5em;
+
     &:last-child {
       margin-right: 0;
     }
   }
 }
 
+.formWrapper.formWrapper-enter {
+  opacity: 0;
+}
+
+.formWrapper.formWrapper-enter-active {
+  opacity: 1;
+  transition: opacity linear .5s;
+  //animation: ease-in .3s appearing 1 forwards;
+}
+
+.formWrapper.formWrapper-appear {
+  opacity: 0;
+}
+
+.formWrapper.formWrapper-appear-active {
+  opacity: 1;
+  transition: opacity linear .5s;
+  //animation: ease-in .3s appearing 1 forwards;
+}
+
+//
+//.formWrapper-enter-done {
+//  opacity: 1;
+//}
+
+
+//.formWrapper.entered {
+//  opacity: 1;
+//  transition: opacity .5s linear;
+//
+//}
+////
+.formWrapper.entering {
+  //transition: opacity .1s linear;
+}
+
+//
+//.formWrapper.exiting {
+//  //color: greenyellow;
+//  //background-color: red;
+//
+//  animation: ease-in .3s appearing 1 forwards;
+//}
+//
+//.formWrapper.exited {
+//  //background-color: greenyellow;
+//  animation: ease-in .3s appearing 1 forwards;
+//
+//  //opacity: 1;
+//  //transition: opacity .1s linear;
+//}
+
+//
+//
+//.form.entering {
+//  opacity: 0;
+//
+//}
+//
+//.form.entered {
+//  opacity: 0;
+//}
+//
+//.form.exiting {
+//  opacity: 1;
+//  transition: opacity 1s linear;
+//}
+//
+//.form.exited {
+//  opacity: 1;
+//}
+
+
 .form,
-.form>* {
+.form > * {
   cursor: initial;
 }
 
-.form>label>input,
-.form>label,
-.form>button {
+.form > label > input,
+.form > label,
+.form > button {
   font-weight: bold;
   cursor: pointer;
+}
+
+
+@keyframes appearing {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

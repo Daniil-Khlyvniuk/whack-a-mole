@@ -5,10 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { gamePlaySelectors } from "./Store/gamePlay";
 import { moleActions, moleSelectors } from "./Store/mole";
+import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
 
 function App() {
 	const [ , updateState ] = useState();
 	const forceUpdate = useCallback(() => updateState({}), []);
+	const [ isOpen, setIsOpen ] = useState(false)
 	const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
 	const speed = useSelector(gamePlaySelectors.getSpeed())
@@ -18,16 +20,20 @@ function App() {
 
 
 	useEffect(() => {
+		setTimeout(() => {
+			setIsOpen(true)
+		}, 1000)
+	}, [ didStarted ])
+
+
+	useEffect(() => {
 		if (!didStarted) return
 		const delta = Math.random() * 350
-		// console.log(delta);
 
-		// test(delta).then(() => {
-			setTimeout(() => {
-				const activeId = getRandomActiveMole()
-				dispatch(moleActions.setActiveMole(activeId))
-			}, +speed)
-		// })
+		setTimeout(() => {
+			const activeId = getRandomActiveMole()
+			dispatch(moleActions.setActiveMole(activeId))
+		}, +speed)
 	}, [ didStarted, activeMole, updateTrigger ])
 
 
@@ -47,36 +53,34 @@ function App() {
 		while (molesIDs[index] === activeMole) {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
-		// let index = Math.floor(Math.random() * molesIDs.length)
-
 		return molesIDs[index]
 	}
 
 	return (
 		<div className="App">
 			<GameAria/>
-			{
-				!didStarted
-				&&
-				<Form
-					titleText={ "Welcome to the" }
-					supTitleText={ "\"Whack a mole\"!" }
-					btnText={ "Start" }
-					text={ "Please choose the difficulty level" }
-				/>
-			}
-			{
-				lives < 1
-				&&
-				<Form
-					titleText={ "Game over" }
-					supTitleText={ "" }
-					btnText={ "retry" }
-					text={ "Please choose the difficulty level" }
-				/>
-			}
+			<TransitionGroup component={ null }>
+				{
+					!didStarted
+					&&
+					<CSSTransition
+						timeout={ 500 }
+						in={ didStarted }
+						appear
+						classNames={ "formWrapper" }
+					>
+						<Form
+							test1={ didStarted }
+							titleText={ "Welcome to the" }
+							supTitleText={ "\"Whack a mole\"!" }
+							btnText={ "Start" }
+							text={ "Please choose the difficulty level" }
+						/>
+					</CSSTransition>
+				}
+			</TransitionGroup>
 		</div>
-	);
+	)
 }
 
 export default App;

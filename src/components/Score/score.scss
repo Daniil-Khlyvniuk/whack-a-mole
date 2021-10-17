@@ -20,21 +20,21 @@
 }
 
 .scoreCounter.entering {
-  animation: .1s cubic-bezier(1, .01, .6, 1.07) 1 forwards newScore;
+  animation: .05s cubic-bezier(1, .01, .6, 1.07) 1 forwards newScore;
 }
 
 .scoreCounter.entered {
   transform: rotateZ(10deg);
-  transition: transform .1s cubic-bezier(1, .01, .6, 1.07);
+  transition: transform .05s cubic-bezier(1, .01, .6, 1.07);
 }
 
 .scoreCounter.exiting {
   transform: rotateZ(-10deg);
-  transition: transform .1s cubic-bezier(1, .01, .6, 1.07);
+  transition: transform .05s cubic-bezier(1, .01, .6, 1.07);
 }
 
 .scoreCounter.exited {
-  animation: .1s cubic-bezier(1, .01, .6, 1.07) 1 backwards newScore;
+  animation: .05s cubic-bezier(1, .01, .6, 1.07) 1 backwards newScore;
 }
 
 //.scoreCounter.entered {

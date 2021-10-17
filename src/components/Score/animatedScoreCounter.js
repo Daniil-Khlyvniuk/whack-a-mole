@@ -13,12 +13,10 @@ const AnimatedScoreCounter = () => {
 		setIsChange(true)
 	}, [ score ])
 
-	console.log(isChange);
-
 	return (
 		<Transition
 			in={ isChange }
-			timeout={ 250 }
+			timeout={ 100 }
 			onEntered={ () => setIsChange(false) }
 		>
 			{

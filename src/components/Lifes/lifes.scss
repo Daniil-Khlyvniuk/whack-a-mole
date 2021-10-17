@@ -22,7 +22,7 @@
 
 .heart-exit-active {
   opacity: 0;
-  animation: ease-in .3s removingHeart 1 backwards;
+  animation: ease-in .3s removingHeart 1 forwards;
 }
 
 

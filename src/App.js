@@ -70,7 +70,7 @@ function App() {
 						classNames={ "formWrapper" }
 					>
 						<Form
-							test1={ didStarted }
+							didStarted={didStarted}
 							titleText={ "Welcome to the" }
 							supTitleText={ "\"Whack a mole\"!" }
 							btnText={ "Start" }

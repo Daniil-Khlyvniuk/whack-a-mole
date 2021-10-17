@@ -83,57 +83,57 @@
   //animation: ease-in .3s appearing 1 forwards;
 }
 
-//
-//.formWrapper-enter-done {
-//  opacity: 1;
-//}
 
-
-//.formWrapper.entered {
-//  opacity: 1;
-//  transition: opacity .5s linear;
-//
-//}
-////
-.formWrapper.entering {
-  //transition: opacity .1s linear;
+.form.form-enter {
+  opacity: 1 !important;
 }
 
+.form.form-enter-active {
+  //animation: ease-in .3s appearing 1 forwards;
+}
+
+.form.form-appear {
+  opacity: 1 !important;
+
+}
+
+.form.form-appear-active {
+  animation: appearingForm cubic-bezier(0, 1.46, 1, 1.45) .5s forwards 1;
+  //animation: ease-in .3s appearing 1 forwards;
+}
+
+//_____________________________________________________________________________
+
+
+.mainFormTitle,
+.secondaryFormTitle,
+.formContent,
+.formBtn {
+  opacity: 0;
+}
+
+
+.mainFormTitle.mainFormTitle-appear-active {
+  //color: greenyellow;
+  //animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .7s forwards 1;
+  //opacity: 1;
+}
+
+.mainFormTitle.mainFormTitle-appear-done {
+  animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .5s forwards 1;
+}
+
+//.secondaryFormTitle.secondaryFormTitle-enter-active {
 //
-//.formWrapper.exiting {
-//  //color: greenyellow;
-//  //background-color: red;
-//
-//  animation: ease-in .3s appearing 1 forwards;
-//}
-//
-//.formWrapper.exited {
-//  //background-color: greenyellow;
-//  animation: ease-in .3s appearing 1 forwards;
-//
-//  //opacity: 1;
-//  //transition: opacity .1s linear;
 //}
 
-//
-//
-//.form.entering {
-//  opacity: 0;
-//
-//}
-//
-//.form.entered {
-//  opacity: 0;
-//}
-//
-//.form.exiting {
-//  opacity: 1;
-//  transition: opacity 1s linear;
-//}
-//
-//.form.exited {
-//  opacity: 1;
-//}
+.formContent.formContent-appear-done {
+  animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .5s forwards 1 .5s;
+}
+
+.formBtn.formBtn-appear-done {
+  animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .5s forwards 1 1s;
+}
 
 
 .form,
@@ -149,11 +149,24 @@
 }
 
 
-@keyframes appearing {
+@keyframes appearingForm {
   from {
+    top: 25%;
+    transform: translate(-50%, -50%) scale(.5);
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    top: 50%;
+  }
+}
+
+@keyframes appearingFormContent {
+  from {
+    transform: translateX(-250px);
     opacity: 0;
   }
   to {
+    transform: translateX(0);
     opacity: 1;
   }
 }

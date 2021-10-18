@@ -5,9 +5,9 @@ import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { CSSTransition, SwitchTransition, Transition, TransitionGroup } from "react-transition-group";
 
 
-const Form = ({ titleText, supTitleText, btnText, text, didStarted }) => {
+const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	const dispatch = useDispatch()
-	const [ isShowedMainTitle, setIsShowedMainTitle ] = useState(false)
+	const [ isShowedMainTitle, setIsShowedMainTitle ] = useState(didStarted)
 	const [ isShowedSecondaryTitle, setIsShowedSecondaryTitle ] = useState(false)
 	const [ isShowedFormContent, setIsShowedFormContent ] = useState(false)
 	let chosenLevel
@@ -19,6 +19,7 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted }) => {
 		// dispatch(gamePlayActions.setDifficultyLevel(chosenLevel))
 		dispatch(gamePlayActions.setIsPlaying(true))
 		dispatch(gamePlayActions.setIsLoading(false))
+		cb()
 	}
 
 	const handleChange = (ev) => {
@@ -38,7 +39,11 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted }) => {
 				<form onSubmit={ setDifficultyLevel } className={ `form ` } action="">
 					<TransitionGroup component={ null }>
 						<CSSTransition
-							timeout={ 500 }
+							timeout={{
+								appear: 500,
+								enter: 300,
+								exit: 500,
+							}}
 							in={ isShowedMainTitle }
 							classNames={ "mainFormTitle" }
 							appear

@@ -19,10 +19,15 @@ function App() {
 	const dispatch = useDispatch();
 
 
+	const handleClick = () => {
+		setIsOpen(false)
+	}
+
+
 	useEffect(() => {
 		setTimeout(() => {
-			setIsOpen(true)
-		}, 1000)
+			setIsOpen(!didStarted)
+		}, 500)
 	}, [ didStarted ])
 
 
@@ -61,20 +66,21 @@ function App() {
 			<GameAria/>
 			<TransitionGroup component={ null }>
 				{
-					!didStarted
+					isOpen
 					&&
 					<CSSTransition
 						timeout={ 500 }
-						in={ didStarted }
+						in={ isOpen }
 						appear
 						classNames={ "formWrapper" }
 					>
 						<Form
-							didStarted={didStarted}
+							didStarted={ isOpen }
 							titleText={ "Welcome to the" }
 							supTitleText={ "\"Whack a mole\"!" }
 							btnText={ "Start" }
 							text={ "Please choose the difficulty level" }
+							cb={ handleClick }
 						/>
 					</CSSTransition>
 				}

@@ -85,7 +85,7 @@
 
 
 .form.form-enter {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 .form.form-enter-active {
@@ -93,14 +93,17 @@
 }
 
 .form.form-appear {
-  opacity: 1 !important;
-
+  opacity: 1;
 }
 
 .form.form-appear-active {
   animation: appearingForm cubic-bezier(0, 1.46, 1, 1.45) .5s forwards 1;
-  //animation: ease-in .3s appearing 1 forwards;
 }
+
+.formWrapper.formWrapper-exit-active {
+  animation: exitingForm cubic-bezier(0, 1.46, 1, 1.45) .5s forwards 1;
+}
+
 
 //_____________________________________________________________________________
 
@@ -157,6 +160,17 @@
   to {
     transform: translate(-50%, -50%) scale(1);
     top: 50%;
+  }
+}
+
+@keyframes exitingForm {
+  from {
+    //top: 25%;
+    transform: translateX(-50%, -50%) rotateX(0deg);
+  }
+  to {
+    transform: translateX(-50%, -50%) rotateX(90deg);
+    //top: 50%;
   }
 }
 

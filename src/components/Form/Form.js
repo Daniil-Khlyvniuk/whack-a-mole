@@ -30,7 +30,11 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	return (
 		<TransitionGroup className={ `formWrapper` }>
 			<CSSTransition
-				timeout={ 700 }
+				timeout={ {
+					appear: 700,
+					enter: 300,
+					exit: 1000,
+				} }
 				in={ didStarted }
 				appear
 				classNames={ "form" }
@@ -39,11 +43,7 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 				<form onSubmit={ setDifficultyLevel } className={ `form ` } action="">
 					<TransitionGroup component={ null }>
 						<CSSTransition
-							timeout={{
-								appear: 500,
-								enter: 300,
-								exit: 500,
-							}}
+							timeout={ 500 }
 							in={ isShowedMainTitle }
 							classNames={ "mainFormTitle" }
 							appear

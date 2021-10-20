@@ -8,7 +8,7 @@ import { moleActions, moleSelectors } from "./Store/mole";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
 
 function App() {
-	const [ , updateState ] = useState();
+	const [ update, updateState ] = useState();
 	const forceUpdate = useCallback(() => updateState({}), []);
 	const [ isOpen, setIsOpen ] = useState(false)
 	const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
@@ -39,16 +39,17 @@ function App() {
 			const activeId = getRandomActiveMole()
 			dispatch(moleActions.setActiveMole(activeId))
 		}, +speed)
+
 	}, [ didStarted, activeMole, updateTrigger ])
 
 
-	const test = (delta) => {
-		return new Promise(((resolve, reject) => {
-			setTimeout(() => {
-				resolve();
-			}, +delta);
-		}))
-	}
+	// const test = (delta) => {
+	// 	return new Promise(((resolve, reject) => {
+	// 		setTimeout(() => {
+	// 			resolve();
+	// 		}, +delta);
+	// 	}))
+	// }
 
 
 	const getRandomActiveMole = () => {
@@ -58,6 +59,8 @@ function App() {
 		while (molesIDs[index] === activeMole) {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
+		// if (molesIDs[index] === activeMole) dispatch(moleActions.setActiveMole(-1))
+
 		return molesIDs[index]
 	}
 
@@ -66,12 +69,17 @@ function App() {
 			<GameAria/>
 			<TransitionGroup component={ null }>
 				{
-					isOpen
-					&&
+					isOpen &&
 					<CSSTransition
-						timeout={ 500 }
+						timeout={ {
+							appear: 500,
+							enter: 300,
+							exit: 1000,
+						} }
 						in={ isOpen }
 						appear
+						mountOnEnter
+						unmountOnExit
 						classNames={ "formWrapper" }
 					>
 						<Form

@@ -101,7 +101,11 @@
 }
 
 .formWrapper.formWrapper-exit-active {
-  animation: exitingForm cubic-bezier(0, 1.46, 1, 1.45) .5s forwards 1;
+  animation: exitingFormWrapper ease-out 1s forwards 1;
+}
+
+.formWrapper.formWrapper-exit-active > .form {
+  animation: exitingForm cubic-bezier(1, .04, 1, .5) .5s forwards 1;
 }
 
 
@@ -164,13 +168,26 @@
 }
 
 @keyframes exitingForm {
-  from {
+  0% {
     //top: 25%;
-    transform: translateX(-50%, -50%) rotateX(0deg);
+    transform-origin: bottom;
+    transform: translate(-50%, -50%) rotateX(0);
   }
-  to {
-    transform: translateX(-50%, -50%) rotateX(90deg);
-    //top: 50%;
+  100% {
+    transform-origin: bottom;
+    transform: translate(-50%, -50%) rotateX(70deg);
+  }
+}
+
+@keyframes exitingFormWrapper {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

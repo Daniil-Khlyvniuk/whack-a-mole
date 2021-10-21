@@ -16,6 +16,7 @@ const useMoleAnimation = () => {
 		while (molesIDs[ index ] === activeMole || [ 4, 10 ].includes(index)) {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
+
 		return molesIDs[ index ]
 	}
 

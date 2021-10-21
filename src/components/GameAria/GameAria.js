@@ -8,8 +8,6 @@ import Score from "../Score/Score";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const GameAria = () => {
-
-
 	const holes = useMemo(() => ([ ...Array(15) ].map((e, i) =>
 		[ 0, 4, 10, 14 ].includes(i)
 			?

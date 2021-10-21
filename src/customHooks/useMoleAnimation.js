@@ -17,7 +17,6 @@ const useMoleAnimation = () => {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
 
-
 		return molesIDs[ index ]
 	}
 

@@ -6,7 +6,7 @@
 
 При диспатче одного и того же числа происходит "state are equal" и анимация кротов останавливается
 
-На данный момент, в виде временного решения, дописал while что б цифры не посторялись. Чтоб его убрать в
+На данный момент, в виде временного решения, дописал while что б цифры не повторялись. Чтоб его убрать в
 customHooks `useMoleAnimation` на 16 строке закоментируйте while
 
 ## пытался решить (безуспешно) так:
@@ -19,9 +19,7 @@ customHooks `useMoleAnimation` на 16 строке закоментируйте
 
 ```javascript
 // ...
-case
-types.SET_ACTIVE_MOLE
-:
+case types.SET_ACTIVE_MOLE:
 const likeANewState = JSON.parse(JSON.stringify(state))
 
 return {
@@ -30,11 +28,11 @@ return {
 }
 //...
 
+
 // и так:
+
 //...
-case
-types.SET_ACTIVE_MOLE
-:
+case types.SET_ACTIVE_MOLE:
 const likeANewState = state
 likeANewState.activeMole = action.payload
 
@@ -47,7 +45,7 @@ return JSON.parse(JSON.stringify(likeANewState))
 # Возможно будет полезно:
 
 1. Если хотите остановить декремент жизней, в компаненте `Goal` закоментируйте 31-ю строку
-2. На данный момент, в виде временного решения, дописал while что б цифры не посторялись. Чтоб его убрать в
+2. На данный момент, в виде временного решения, дописал while что б цифры не повторялись. Чтоб его убрать в
    customHooks `useMoleAnimation` на 16 строке закоментируйте while
 3. Уровни сложности не на что не влияют. Добавил их на будующее
 4. Логика главной анимации вынесена в customHooks `useMoleAnimation`

@@ -1,29 +1,30 @@
+image: node:14.17.0
+
 stages:
   - build
   - deploy
 
-build:
-  image: node
+cache:
+  paths:
+   - node_modules/
+
+build-pages:
   stage: build
-  
-  variables: 
-    PUBLIC_URL: https://daniil_khlyvniuk.gitlab.io/whack-a-mole-react/
   script:
-    - npm install     
-    - npm run build
+   - rm -rf build
+   - CI=false npm install
+   - CI=false npm run build
+   - rm -rf public
+   - cp build/index.html build/404.html
+   - mv build public
   artifacts:
-    paths:
-      - build/  
-      - node_modules/
-
+   paths:
+   - public
+   
 pages:
-  image: alpine
   stage: deploy
-
-  variables:
-    GIT_STRATEGY: none        
   script:
-    - mv build public         
+    - ls
   artifacts:
-    paths:
-      - public
+   paths:
+     - public

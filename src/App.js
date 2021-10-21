@@ -3,26 +3,31 @@ import Form from "./components/Form/Form";
 import GameAria from "./components/GameAria/GameAria";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { gamePlaySelectors } from "./Store/gamePlay";
+import { gamePlayActions, gamePlaySelectors } from "./Store/gamePlay";
 import { moleActions, moleSelectors } from "./Store/mole";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
+import useMoleAnimation from "./customHooks/useMoleAnimation";
 
 function App() {
-	const [ update, updateState ] = useState();
-	const forceUpdate = useCallback(() => updateState({}), []);
 	const [ isOpen, setIsOpen ] = useState(false)
 	const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
-	const speed = useSelector(gamePlaySelectors.getSpeed())
-	const lives = useSelector(gamePlaySelectors.getLives())
 	const activeMole = useSelector(moleSelectors.getActiveMole())
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
+	const { startAnimation, stopAnimation } = useMoleAnimation()
+	const lives = useSelector(gamePlaySelectors.getLives())
 
 
 	const handleClick = () => {
 		setIsOpen(false)
 	}
 
+	useEffect(() => {
+		if (lives < 1) {
+			stopAnimation()
+			dispatch(gamePlayActions.setIsPlaying(false))
+		}
+	}, [ lives ])
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -30,39 +35,11 @@ function App() {
 		}, 500)
 	}, [ didStarted ])
 
-
 	useEffect(() => {
 		if (!didStarted) return
-		const delta = Math.random() * 350
-
-		setTimeout(() => {
-			const activeId = getRandomActiveMole()
-			dispatch(moleActions.setActiveMole(activeId))
-		}, +speed)
-
+		startAnimation()
 	}, [ didStarted, activeMole, updateTrigger ])
 
-
-	// const test = (delta) => {
-	// 	return new Promise(((resolve, reject) => {
-	// 		setTimeout(() => {
-	// 			resolve();
-	// 		}, +delta);
-	// 	}))
-	// }
-
-
-	const getRandomActiveMole = () => {
-		const molesIDs = [ 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13 ]
-		let index = Math.floor(Math.random() * molesIDs.length)
-
-		while (molesIDs[index] === activeMole) {
-			index = Math.floor(Math.random() * molesIDs.length)
-		}
-		// if (molesIDs[index] === activeMole) dispatch(moleActions.setActiveMole(-1))
-
-		return molesIDs[index]
-	}
 
 	return (
 		<div className="App">

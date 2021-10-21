@@ -8,15 +8,13 @@ import { CSSTransition, SwitchTransition, Transition, TransitionGroup } from "re
 const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	const dispatch = useDispatch()
 	const [ isShowedMainTitle, setIsShowedMainTitle ] = useState(didStarted)
-	const [ isShowedSecondaryTitle, setIsShowedSecondaryTitle ] = useState(false)
-	const [ isShowedFormContent, setIsShowedFormContent ] = useState(false)
 	let chosenLevel
 
 
 	const setDifficultyLevel = (ev) => {
 		ev.preventDefault()
 		if (!chosenLevel) return
-		// dispatch(gamePlayActions.setDifficultyLevel(chosenLevel))
+		dispatch(gamePlayActions.setDifficultyLevel(chosenLevel))
 		dispatch(gamePlayActions.setIsPlaying(true))
 		dispatch(gamePlayActions.setIsLoading(false))
 		cb()

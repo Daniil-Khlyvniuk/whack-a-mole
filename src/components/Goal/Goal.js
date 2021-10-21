@@ -4,6 +4,7 @@ import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { useDispatch, useSelector } from "react-redux";
 import { moleActions, moleSelectors } from "../../Store/mole";
 import { CSSTransition } from "react-transition-group";
+import useMoleAnimation from "../../customHooks/useMoleAnimation";
 
 
 const Goal = ({ id }) => {
@@ -22,42 +23,37 @@ const Goal = ({ id }) => {
 
 		setTimeout(() => {
 			setCaught(false)
-		}, +speed)
+		}, +speed / 2)
 	}, [])
 
 	const handleExit = useCallback(() => {
 		if (!caught) {
-			return dispatch(gamePlayActions.setLives(1))
+			return dispatch(gamePlayActions.livesDecrement(1))
 		}
 	}, [])
 
 
-	useEffect(() => {
-		if (lives < 1) dispatch(gamePlayActions.setIsPlaying(false))
-	}, [ lives ])
+	// useEffect(() => {
+	// 	if (lives < 1) {
+	// 		stopAnimation()
+	// 	)
+	// 	}
+	// }, [ lives ])
 
 
-	return (
-		<>
-			{
-				caught
-					?
-					null
-					:
-					<CSSTransition
-						in={ isActive }
-						timeout={ +speed }
-						className={ "goal" }
-						onExited={ handleExit }
-					>
-						<div
-							onMouseDown={ catching }
-							id={ id }
-							className={ "goal" }
-						/>
-					</CSSTransition>
-			}
-		</>
+	return !caught && (
+		<CSSTransition
+			in={ isActive }
+			timeout={ +speed }
+			className={ "goal" }
+			onExited={ handleExit }
+		>
+			<div
+				onMouseDown={ catching }
+				id={ id }
+				className={ "goal" }
+			/>
+		</CSSTransition>
 	)
 };
 

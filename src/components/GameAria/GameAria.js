@@ -5,7 +5,7 @@ import "../Mole/_mole.scss"
 import "../Mole/animation.css"
 import Lives from "../Lifes/Lifes"
 import Score from "../Score/Score";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { TransitionGroup } from "react-transition-group";
 
 
 const GameAria = () => {

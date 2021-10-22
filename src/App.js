@@ -7,6 +7,7 @@ import { gamePlayActions, gamePlaySelectors } from "./Store/gamePlay";
 import { moleActions, moleSelectors } from "./Store/mole";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
 import useMoleAnimationController from "./customHooks/useMoleAnimationController";
+import UseGameOver from "./customHooks/useGameOver";
 
 function App() {
 	const [ isOpen, setIsOpen ] = useState(false)
@@ -16,7 +17,7 @@ function App() {
 	const dispatch = useDispatch()
 	const { startAnimation, stopAnimation } = useMoleAnimationController()
 	const lives = useSelector(gamePlaySelectors.getLives())
-
+	const { backToInitState } = UseGameOver()
 
 	const handleClick = () => {
 		setIsOpen(false)
@@ -26,6 +27,7 @@ function App() {
 		if (lives < 1) {
 			stopAnimation()
 			dispatch(gamePlayActions.setIsPlaying(false))
+			// backToInitState()
 		}
 	}, [ lives ])
 

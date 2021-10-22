@@ -21,7 +21,7 @@ const useMoleAnimationController = () => {
 
 	const startAnimation = useCallback(() => timer = setTimeout(() => {
 		let activeId = getRandomActiveMole()
-		dispatch(moleActions.setActiveMole(activeId))
+		dispatch(moleActions.setActiveMole(11))
 	}, +speed), [])
 
 	const stopAnimation = useCallback(() => {

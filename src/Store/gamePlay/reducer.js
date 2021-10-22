@@ -48,6 +48,9 @@ const reducer = (state = initialState, action) => {
         lives: state.lives - 1
       }
 
+			case types.SET_INITIAL_STATE:
+      return initialState
+
     default:
       return state;
   }

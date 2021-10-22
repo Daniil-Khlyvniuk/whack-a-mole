@@ -30,6 +30,10 @@ const setSpeed = (speed) => ({
 	payload: speed
 })
 
+const replay = () => ({
+	type: types.SET_INITIAL_STATE,
+})
+
 
 export default {
 	setDifficultyLevel,
@@ -37,6 +41,7 @@ export default {
 	setIsPlaying,
 	setIsLoading,
 	livesDecrement,
-	setSpeed
+	setSpeed,
+	replay
 }
 

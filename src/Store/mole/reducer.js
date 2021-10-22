@@ -31,6 +31,10 @@ const reducer = (state = initialState, action) => {
 				...state,
 				molesIDs: action.payload
 			}
+
+		case types.SET_INITIAL_STATE:
+			return initialState
+
 		default:
 			return state;
 	}

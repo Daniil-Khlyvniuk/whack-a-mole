@@ -14,7 +14,9 @@ const Goal = ({ id }) => {
 	let t1 = 0
 	let time = 0
 	const isActive = useSelector(moleSelectors.getActiveMole()) === id
+	const score = useSelector(gamePlaySelectors.getScore())
 	let [ caught, setCaught ] = useState(false)
+	let [ loosen, setLoosen ] = useState(false)
 	const lives = useSelector(gamePlaySelectors.getLives())
 	const dispatch = useDispatch();
 	const speed = useSelector(gamePlaySelectors.getSpeed())
@@ -24,37 +26,68 @@ const Goal = ({ id }) => {
 		t0 = performance.now()
 	}
 
+
+	// useEffect(() => {
+	// 	setTimeout(() => {
+	// 		if (!caught && isActive) {
+	// 			setLoosen(true)
+	// 			dispatch(gamePlayActions.livesDecrement(1))
+	// 		}
+	// 	}, +speed)
+	// 	setTimeout(() => {
+	// 		if (!caught && isActive) {
+	// 			setLoosen(false)
+	// 			dispatch(gamePlayActions.livesDecrement(1))
+	// 		}
+	// 	}, +speed + 15)
+	// }, [ isActive, caught, loosen, lives ])
+
+	useEffect(() => {
+		return () => {
+			t0 = 0
+			t1 = 0
+		}
+	}, [ isActive, caught, loosen, lives ])
+
+
 	const catching = () => {
 		if (isActive) {
 			t1 = performance.now()
-		}
-		setCaught(true)
-		dispatch(moleActions.setCaughtMole(id))
+			time = t1 - t0
 
+			if (time > speed) {
+				let repeatsCount = time / speed
+				time = speed / repeatsCount - 25
+			}
+		}
 		if (lives > 0) {
 			dispatch(gamePlayActions.setScore(5))
 		}
 
-		time = Math.floor(t1 - t0) - 10
+		setCaught(true)
+		dispatch(moleActions.setCaughtMole(id))
+
 		setTimeout(() => {
 			setCaught(false)
 		}, speed - time)
 	}
 
 	const handleExit = () => {
+		console.log("handleExit")
 		if (!caught) {
-			dispatch(gamePlayActions.livesDecrement(1))
+			// setLoosen(true)
+			// dispatch(gamePlayActions.livesDecrement(1))
 		}
-		t0 = 0
-		t1 = 0
+
 	}
 
-	return !caught && (
+
+	return !caught && !loosen && (
 		<CSSTransition
 			in={ isActive }
 			timeout={ +speed }
 			className={ isActive ? `${ goal } ${ active }` : goal }
-			onExit={ handleExit }
+			// onExit={ handleExit }
 		>
 			<div
 				onMouseDown={ catching }

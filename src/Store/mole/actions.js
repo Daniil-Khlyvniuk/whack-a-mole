@@ -20,5 +20,9 @@ const setMoleIDs = (moleIDs) => ({
 	payload: moleIDs
 })
 
-export default { setActiveMole, setCaughtMole, setUpdateTrigger, setMoleIDs }
+const replay = () => ({
+	type: types.SET_INITIAL_STATE,
+})
+
+export default { setActiveMole, setCaughtMole, setUpdateTrigger, setMoleIDs, replay }
 

@@ -3,27 +3,26 @@ import { moleActions, moleSelectors } from "../Store/mole";
 import { useDispatch, useSelector } from "react-redux";
 import { gamePlaySelectors } from "../Store/gamePlay";
 
-const useMoleAnimation = () => {
+const useMoleAnimationController = () => {
 	const dispatch = useDispatch()
 	const speed = useSelector(gamePlaySelectors.getSpeed())
-	const activeMole = useSelector(moleSelectors.getActiveMole())
+	const molesIDs = useSelector(moleSelectors.getMoleIDs())
 	let timer
 
 	const getRandomActiveMole = () => {
-		const molesIDs = [ 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13 ]
 		let index = Math.floor(Math.random() * molesIDs.length)
 
-		while (molesIDs[ index ] === activeMole || [ 4, 10 ].includes(index)) {
+		while ([ 4, 10 ].includes(index)) {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
 
-		return molesIDs[ index ]
+		return molesIDs[index]
 	}
 
-	const startAnimation = () => timer = setTimeout(() => {
+	const startAnimation = useCallback(() => timer = setTimeout(() => {
 		let activeId = getRandomActiveMole()
 		dispatch(moleActions.setActiveMole(activeId))
-	}, +speed)
+	}, +speed), [])
 
 	const stopAnimation = useCallback(() => {
 		return clearTimeout(timer)
@@ -37,4 +36,4 @@ const useMoleAnimation = () => {
 	}
 };
 
-export default useMoleAnimation;
+export default useMoleAnimationController;

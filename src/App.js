@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { gamePlayActions, gamePlaySelectors } from "./Store/gamePlay";
 import { moleActions, moleSelectors } from "./Store/mole";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
-import useMoleAnimation from "./customHooks/useMoleAnimation";
+import useMoleAnimationController from "./customHooks/useMoleAnimationController";
 
 function App() {
 	const [ isOpen, setIsOpen ] = useState(false)
@@ -14,7 +14,7 @@ function App() {
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
 	const activeMole = useSelector(moleSelectors.getActiveMole())
 	const dispatch = useDispatch()
-	const { startAnimation, stopAnimation } = useMoleAnimation()
+	const { startAnimation, stopAnimation } = useMoleAnimationController()
 	const lives = useSelector(gamePlaySelectors.getLives())
 
 

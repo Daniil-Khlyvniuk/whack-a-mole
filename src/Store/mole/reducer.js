@@ -1,6 +1,7 @@
 import types from "./types";
 
 const initialState = {
+	molesIDs: [ 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 13 ],
 	caughtMole: -1,
 	activeMole: -1,
 	updateTrigger: false
@@ -25,8 +26,11 @@ const reducer = (state = initialState, action) => {
 				...state,
 				updateTrigger: !state.updateTrigger
 			}
-
-
+		case types.SET_MOLE_IDs:
+			return {
+				...state,
+				molesIDs: action.payload
+			}
 		default:
 			return state;
 	}

@@ -1,8 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import HoleWrapper from "./HoleWrapper";
 import "./_gameAria.scss"
-import "../Mole/_mole.scss"
-import "../Mole/animation.css"
 import Lives from "../Lifes/Lifes"
 import Score from "../Score/Score";
 import { TransitionGroup } from "react-transition-group";

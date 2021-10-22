@@ -15,5 +15,10 @@ const setUpdateTrigger = () => ({
 	payload: ""
 })
 
-export default { setActiveMole, setCaughtMole, setUpdateTrigger }
+const setMoleIDs = (moleIDs) => ({
+	type: types.SET_MOLE_IDs,
+	payload: moleIDs
+})
+
+export default { setActiveMole, setCaughtMole, setUpdateTrigger, setMoleIDs }
 

@@ -87,36 +87,25 @@
 }
 
 
-.goal {
-  cursor: pointer;
-  position: absolute;
-  top: 100%;
-  left: 20%;
-  right: 20%;
-  bottom: -25%;
-  z-index: 5;
-  border-radius: 25%;
-  //background-color: #00000000;
-  background-color: #00000055;
-}
 
-.goal.enter {
-  top: 100%;
-}
 
-.goal.enter-active {
-  top: 0;
-  transition: top .7s cubic-bezier(1, 0, 0, 1);
-}
-
-.goal.exit {
-  top: 0;
-}
-
-.goal.exit-active {
-  top: 100%;
-  transition: top .7s cubic-bezier(1, 0, 0, 1);
-}
+//.goal.enter {
+//  top: 100%;
+//}
+//
+//.goal.enter-active {
+//  top: 0;
+//  transition: top .7s cubic-bezier(1, 0, 0, 1);
+//}
+//
+//.goal.exit {
+//  top: 0;
+//}
+//
+//.goal.exit-active {
+//  top: 100%;
+//  transition: top .7s cubic-bezier(1, 0, 0, 1);
+//}
 
 //.goal.active {
 //    animation-name: moveGoal;

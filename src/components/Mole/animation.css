@@ -1,31 +1,41 @@
 .mole.enter {
-    top: 80%;
-    transition: top .7s cubic-bezier(1, 0, 0, 1);
-    /*animation: 1s cubic-bezier(1, 0, 0, 1) 1 moveMole forwards;*/
+  /*top: 80%;*/
+  /*transition: top .7s cubic-bezier(1, 0, 0, 1);*/
+  /*animation: 1s cubic-bezier(1, 0, 0, 1) infinite moveMole forwards;*/
 }
 
 .mole.enter-active {
-    top: 0;
+  /*top: 0;*/
+  /*transition: top .7s cubic-bezier(1, 0, 0, 1);*/
+  /*animation: 1s cubic-bezier(1, 0, 0, 1) infinite moveMole forwards;*/
+}
+
+.mole.mole-active {
+  animation: .7s cubic-bezier(1, 0, 0, 1) infinite moveMole forwards;
 }
 
 .mole.exit {
-    top: 0;
+  /*top: 0;*/
+  /*transition: top .7s cubic-bezier(1, 0, 0, 1);*/
 }
 
 .mole.exit-active {
-    top: 80%;
-    transition: top .7s cubic-bezier(1, 0, 0, 1);
-    /*animation: 1s cubic-bezier(1, 0, 0, 1) 1 moveMole backwards;*/
+  /*top: 80%;*/
+  /*transition: top .7s cubic-bezier(1, 0, 0, 1);*/
+  /*animation: 1s cubic-bezier(1, 0, 0, 1) 1 moveMole forwards;*/
 }
 
 
 /*____________________________________________________*/
 
-/*@keyframes moveMole {*/
-/*    0% {*/
-/*        top: 80%;*/
-/*    }*/
-/*    100% {*/
-/*        top: 0;*/
-/*    }*/
-/*}*/
+@keyframes moveMole {
+  0% {
+    top: 80%;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 80%;
+  }
+}

@@ -17,6 +17,7 @@ const Goal = ({ id }) => {
 	let isActive = useSelector(moleSelectors.getActiveMole()) === id
 
 	const [ caught, setCaught ] = useState(false)
+	const [ click, setClick ] = useState(0)
 	const [ updateTrigger, setUpdateTrigger ] = useState(true)
 	const caughtId = useSelector(moleSelectors.getCaughtMole())
 	const isPlaying = useSelector(gamePlaySelectors.getIsPlaying())
@@ -39,11 +40,11 @@ const Goal = ({ id }) => {
 		}
 
 		setCaught(true)
+		setClick(1)
 		dispatch(moleActions.setCaughtMole(id))
 
 		setTimeout(() => {
 			setCaught(false)
-
 			t0 = 0
 			t1 = 0
 		}, speed - time)
@@ -52,12 +53,15 @@ const Goal = ({ id }) => {
 	const handleEnter = () => {
 		setTimeout(() => {
 			setUpdateTrigger(false)
+			setClick(0)
 		}, +speed)
 	}
 
 	const handleExit = () => {
-		if ((caughtId !== id) && isPlaying && !updateTrigger) dispatch(gamePlayActions.livesDecrement(1))
-		dispatch(moleActions.setCaughtMole(-1))
+		if (!click && !caught && isPlaying && !updateTrigger) {
+			console.log(isActive)
+			dispatch(gamePlayActions.livesDecrement(1))
+		}
 
 		setUpdateTrigger(isActive)
 	}

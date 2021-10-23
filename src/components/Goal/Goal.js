@@ -32,7 +32,7 @@ const Goal = ({ id }) => {
 		setUpdateTrigger(true)
 	}, [ isActive, caught, updateTrigger ])
 
-	const catching = () => {
+	const catching = useCallback(() => {
 		if (isActive) {
 			t1 = performance.now()
 			time = t1 - t0
@@ -48,20 +48,20 @@ const Goal = ({ id }) => {
 			t0 = 0
 			t1 = 0
 		}, speed - time)
-	}
+	}, [ speed ])
 
-	const handleEnter = () => {
+	const handleEnter = useCallback(() => {
 		setTimeout(() => {
 			setUpdateTrigger(false)
 			setCaught(false)
 		}, +speed)
-	}
+	}, [ speed ])
 
-	const handleExit = () => {
+	const handleExit = useCallback(() => {
 		if (isPlaying && !caught) {
 			dispatch(gamePlayActions.livesDecrement(1))
 		}
-	}
+	}, [ isPlaying, caught ])
 
 	return (
 		<CSSTransition

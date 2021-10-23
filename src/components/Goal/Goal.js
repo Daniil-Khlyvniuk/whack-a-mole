@@ -51,13 +51,14 @@ const Goal = ({ id }) => {
 
 	const handleEnter = () => {
 		setTimeout(() => {
-			if ((caughtId === -1) && !isPlaying) return
 			setUpdateTrigger(false)
 		}, +speed)
 	}
 
 	const handleExit = () => {
 		if ((caughtId !== id) && isPlaying && !updateTrigger) dispatch(gamePlayActions.livesDecrement(1))
+		dispatch(moleActions.setCaughtMole(-1))
+
 		setUpdateTrigger(isActive)
 	}
 

@@ -8,6 +8,7 @@ import useMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles
 import UseMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles";
 import { jsx, css, Global, ClassNames } from '@emotion/react'
 import useStyles from "./styles";
+import useMoleAnimationController from "../../customHooks/useMoleAnimationController";
 
 const Goal = ({ id }) => {
 	let t0 = 0
@@ -29,7 +30,6 @@ const Goal = ({ id }) => {
 	}
 
 	const catching = () => {
-
 		if (isActive) {
 			t1 = performance.now()
 			time = t1 - t0
@@ -51,20 +51,20 @@ const Goal = ({ id }) => {
 
 	const handleEnter = () => {
 		setTimeout(() => {
+			if ((caughtId === -1) && !isPlaying) return
 			setUpdateTrigger(false)
 		}, +speed)
 	}
 
 	const handleExit = () => {
-		if ((caughtId !== id) && isPlaying) dispatch(gamePlayActions.livesDecrement(1))
-		dispatch(moleActions.setCaughtMole(-1))
+		if ((caughtId !== id) && isPlaying && !updateTrigger) dispatch(gamePlayActions.livesDecrement(1))
 		setUpdateTrigger(isActive)
 	}
 
 
 	return (
 		<CSSTransition
-			in={ isActive && updateTrigger }
+			in={ updateTrigger && isActive }
 			timeout={ +speed }
 			classNames={ goal }
 			onEnter={ handleEnter }

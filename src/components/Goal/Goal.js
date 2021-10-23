@@ -3,12 +3,10 @@ import "../GameAria/_gameAria.scss"
 import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { useDispatch, useSelector } from "react-redux";
 import { moleActions, moleSelectors } from "../../Store/mole";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import useMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles"
+import { CSSTransition } from "react-transition-group";
 import UseMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles";
-import { jsx, css, Global, ClassNames } from '@emotion/react'
 import useStyles from "./styles";
-import useMoleAnimationController from "../../customHooks/useMoleAnimationController";
+
 
 const Goal = ({ id }) => {
 	let t0 = 0

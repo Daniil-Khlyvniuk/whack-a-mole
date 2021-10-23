@@ -3,7 +3,7 @@ import "../GameAria/_gameAria.scss"
 import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { useDispatch, useSelector } from "react-redux";
 import { moleActions, moleSelectors } from "../../Store/mole";
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles"
 import UseMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles";
 import { jsx, css, Global, ClassNames } from '@emotion/react'
@@ -14,10 +14,12 @@ const Goal = ({ id }) => {
 	let t0 = 0
 	let t1 = 0
 	let time = 0
-	let isActive = useSelector(moleSelectors.getActiveMole()) === id
-
+	// console.log(`render`)
+	const isActive = useSelector(moleSelectors.getActiveMole()) === id
+	// console.log(isActive);
 	const [ caught, setCaught ] = useState(false)
 	const [ click, setClick ] = useState(0)
+	// const [ act, setC ] = useState(0)
 	const [ updateTrigger, setUpdateTrigger ] = useState(true)
 	const caughtId = useSelector(moleSelectors.getCaughtMole())
 	const isPlaying = useSelector(gamePlaySelectors.getIsPlaying())
@@ -29,6 +31,12 @@ const Goal = ({ id }) => {
 	if (isActive) {
 		t0 = performance.now()
 	}
+
+
+	useEffect(() => () => {
+		console.log("useEffect")
+		setUpdateTrigger(true)
+	}, [ isActive, caught, updateTrigger ])
 
 	const catching = () => {
 		if (isActive) {
@@ -58,27 +66,28 @@ const Goal = ({ id }) => {
 	}
 
 	const handleExit = () => {
-		if (!click && !caught && isPlaying && !updateTrigger) {
-			console.log(isActive)
+		if (isPlaying && !click) {
 			dispatch(gamePlayActions.livesDecrement(1))
 		}
-
-		setUpdateTrigger(isActive)
 	}
-
 
 	return (
 		<CSSTransition
-			in={ updateTrigger && isActive }
+			in={ isActive && updateTrigger }
 			timeout={ +speed }
-			classNames={ goal }
-			onEnter={ handleEnter }
+			classNames={ {
+				enter: goal,
+				enterActive: active,
+				enterDone: goal,
+				exit: goal,
+				exitActive: goal,
+				exitDone: goal,
+			} }
+			onEntering={ handleEnter }
 			onExit={ handleExit }
 		>
 			<div
-				className={ isActive ? `${ goal } ${ active }` : goal }
 				onMouseDown={ caught ? null : catching }
-				id={ id }
 			/>
 		</CSSTransition>
 	)

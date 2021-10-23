@@ -7,6 +7,7 @@ const UseGameOver = () => {
 	const dispatch = useDispatch()
 
 	const backToInitState = () => {
+		dispatch(moleActions.setActiveMole(-1))
 		dispatch(moleActions.replay())
 		dispatch(gamePlayActions.replay())
 	}

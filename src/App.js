@@ -26,8 +26,8 @@ function App() {
 	useEffect(() => {
 		if (lives < 1) {
 			stopAnimation()
-			dispatch(gamePlayActions.setIsPlaying(false))
-			// backToInitState()
+			// dispatch(gamePlayActions.setIsPlaying(false))
+			backToInitState()
 		}
 	}, [ lives ])
 

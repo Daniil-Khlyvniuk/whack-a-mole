@@ -87,49 +87,6 @@
 }
 
 
-
-
-//.goal.enter {
-//  top: 100%;
-//}
-//
-//.goal.enter-active {
-//  top: 0;
-//  transition: top .7s cubic-bezier(1, 0, 0, 1);
-//}
-//
-//.goal.exit {
-//  top: 0;
-//}
-//
-//.goal.exit-active {
-//  top: 100%;
-//  transition: top .7s cubic-bezier(1, 0, 0, 1);
-//}
-
-//.goal.active {
-//    animation-name: moveGoal;
-//    animation-timing-function: cubic-bezier(1,0,0,1);
-//    animation-duration: 2s;
-//    animation-iteration-count: 1;
-//}
-//
-//
-//@keyframes moveGoal {
-//  0% {
-//    top: 80%;
-//  }
-//
-//  50% {
-//    top: 0%;
-//  }
-//
-//  100% {
-//    top: 100%;
-//  }
-//}
-
-
 @media (max-width: 600px) {
   .overlap_1 {
     height: 44%;

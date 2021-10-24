@@ -1,16 +1,16 @@
 .mole {
-    width: 75%;
-    display: block;
-    margin: 0 auto;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    z-index: 1;
+  width: 75%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
 
-    svg {
-        width: 100%;
-    }
+  svg {
+    width: 100%;
+  }
 }
 
 
@@ -23,114 +23,186 @@
 //}
 
 
-  .test{
-    animation: 1s cubic-bezier(1,0,0,1) 1 forwards moveMole;
-  }
-
-
+.test {
+  animation: 1s cubic-bezier(1, 0, 0, 1) 1 forwards moveMole;
+}
 
 
 /* ______ missed _______ */
 
 .off {
-    --anim-delay: 0;
-    position: relative;
+  --anim-delay: 0;
+  position: relative;
 }
 
 .off::after {
-    content: "";
-    position: absolute;
-    border-radius: 50% / 25%;
-    top: -1px;
-    left: -10px;
-    bottom: 0;
-    right: -1px;
-    animation: off .1s cubic-bezier(0, 0.2, 0.8, 1) 1 forwards;
-    animation-delay: var(--anim-delay);
+  content: "";
+  position: absolute;
+  border-radius: 50% / 25%;
+  top: -1px;
+  left: -10px;
+  bottom: 0;
+  right: -1px;
+  animation: off .1s cubic-bezier(0, 0.2, 0.8, 1) 1 forwards;
+  animation-delay: var(--anim-delay);
 }
 
 @keyframes off {
-    from {
-        background-color: rgba(0, 0, 0, 0);
-    }
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
 
-    to {
-        background-color: rgba(0, 0, 0, .6);
-    }
+  to {
+    background-color: rgba(0, 0, 0, .6);
+  }
 }
 
 /* ______ caught _______ */
 
-.anim-wrapper {
-    display: none;
-}
-
-.mole[data-is-caught="true"]>.anim-wrapper {
-    display: block;
-}
-
-.star {
-    top: -15px;
-    display: inherit;
-    position: absolute;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    background-color: rgb(255, 246, 102);
-    width: 25px;
-    height: 25px;
-    animation: caught-animation 1.5s ease-in-out infinite;
-}
-
-.star:first-child {
-    animation-delay: 0s;
-}
-
-.star:nth-child(2) {
-    animation-delay: .2s;
-}
-
-.star:nth-child(3) {
-    animation-delay: .4s;
-}
-
-.star:nth-child(4) {
-    animation-delay: .6s;
-}
-
-
-@keyframes caught-animation {
-    0% {
-        left: 0;
-        z-index: 2;
-        transform: rotateY(0deg);
-    }
-
-    30% {
-        transform: rotateY(0deg);
-    }
-
-    49% {
-        z-index: 2;
-    }
-
-    50% {
-        transform: rotateY(180deg);
-        left: 70px;
-        z-index: 0;
-    }
-
-    90% {
-        transform: rotateY(180deg);
-    }
-
-    99% {
-        z-index: -10;
-    }
-
-    100% {
-        left: 0
-    }
-}
+//.anim-wrapper {
+//    display: none;
+//}
+//
+//.mole[data-is-caught="true"]>.anim-wrapper {
+//    display: block;
+//}
+//
+//.star {
+//    top: -15px;
+//    display: inherit;
+//    position: absolute;
+//    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+//    background-color: rgb(255, 246, 102);
+//    width: 25px;
+//    height: 25px;
+//    animation: caught-animation 1.5s ease-in-out infinite;
+//}
+//
+//.star:first-child {
+//    animation-delay: 0s;
+//}
+//
+//.star:nth-child(2) {
+//    animation-delay: .2s;
+//}
+//
+//.star:nth-child(3) {
+//    animation-delay: .4s;
+//}
+//
+//.star:nth-child(4) {
+//    animation-delay: .6s;
+//}
+//
+//
+//@keyframes caught-animation {
+//    0% {
+//        left: 0;
+//        z-index: 2;
+//        transform: rotateY(0deg);
+//    }
+//
+//    30% {
+//        transform: rotateY(0deg);
+//    }
+//
+//    49% {
+//        z-index: 2;
+//    }
+//
+//    50% {
+//        transform: rotateY(180deg);
+//        left: 70px;
+//        z-index: 0;
+//    }
+//
+//    90% {
+//        transform: rotateY(180deg);
+//    }
+//
+//    99% {
+//        z-index: -10;
+//    }
+//
+//    100% {
+//        left: 0
+//    }
+//}
 
 // ____________ MOLE  SVG _______________
 
-.cls-1{fill:#574338;}.cls-2{fill:#725849;}.cls-3{fill:#fff;}.cls-4{fill:#3c3b3d;}.cls-5,.cls-7{fill:none;stroke-miterlimit:10;stroke-width:2px;}.cls-5{stroke:#fff;}.cls-6{fill:#ed5470;}.cls-7{stroke:gray;}
+
+.cls-1 {
+  fill: #574338;
+}
+
+.cls-2 {
+  fill: #725849;
+}
+
+.cls-3 {
+  fill: #fff;
+}
+
+.cls-4 {
+  fill: #3c3b3d;
+}
+
+.cls-5, .cls-7 {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+}
+
+.cls-5 {
+  stroke: #fff;
+}
+
+.cls-6 {
+  fill: #ed5470;
+}
+
+.cls-7 {
+  stroke: gray;
+}
+
+.st0-caught {
+  fill: #574338;
+}
+
+.st1-caught {
+  fill: #725849;
+}
+
+.st2-caught {
+  fill: #3C3B3D;
+}
+
+.st3-caught {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+
+.st4-caught {
+  fill: #ED5470;
+}
+
+.st5-caught {
+  fill: #FFFFFF;
+}
+
+.st6-caught {
+  fill: none;
+  stroke: #808080;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+
+.st7-caught {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+}

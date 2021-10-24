@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import "./_mole.scss"
 import "./animation.css"
 import MoleSVG from "../Images/MoleSVG";
@@ -11,33 +11,18 @@ import UseMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles
 
 const Mole = ({ id }) => {
 	const isActive = +useSelector(moleSelectors.getActiveMole()) === id
-	const active1 = +useSelector(moleSelectors.getActiveMole())
+	const caught = useSelector(moleSelectors.getCaughtMole()) === id
 	const speed = useSelector(gamePlaySelectors.getSpeed())
 	const classes = UseMovingAnimationStyles("mole")
-
-	// useEffect(() => {
-	// 	if (!active) return
-	// 	setIsActive(true)
-	//
-	// 	setTimeout(() => {
-	// 		active && setIsActive(true)
-	//
-	// 	}, +speed)
-	//
-	// }, [ active ])
-
 
 	return (
 		<CSSTransition
 			in={ isActive }
 			timeout={ +speed }
 			className={ isActive ? `mole ${ classes.active }` : "mole" }
-
-			// onExiting={ () => setIsActive(true) }
-
 		>
 			<div>
-				<MoleSVG/>
+				<MoleSVG isCaught={ caught }/>
 			</div>
 		</CSSTransition>
 	);

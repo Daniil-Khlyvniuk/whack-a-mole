@@ -2,6 +2,4 @@ buld project:
   image: node:14
   script:
     - npm -g i
-    - npm cache clear --force
-    - npm -g i sass
     - npm run build

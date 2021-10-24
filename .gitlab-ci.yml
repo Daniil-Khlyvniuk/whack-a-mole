@@ -1,5 +1,6 @@
 buld project:
   image: node:14
   script:
-    - npm i -g
+    - npm -g i
+    - npm -g i sass
     - npm run build

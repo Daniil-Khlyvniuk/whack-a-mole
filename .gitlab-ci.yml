@@ -1,0 +1,4 @@
+buld project:
+  script:
+    - npm install
+    - npm run build

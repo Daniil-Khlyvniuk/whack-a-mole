@@ -1,5 +1,5 @@
 buld project:
   image: node:14
   script:
-    - npm i
+    - npm i -g
     - npm run build

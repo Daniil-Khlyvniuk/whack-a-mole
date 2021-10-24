@@ -2,11 +2,11 @@ import types from "./types";
 
 const initialState = {
 	difficultyLevel: "easy",
-	speed: 1400,
+	speed: 1200,
 	score: 0,
 	isPlaying: false,
 	isLoading: true,
-	lives: 15
+	lives: 3
 }
 
 

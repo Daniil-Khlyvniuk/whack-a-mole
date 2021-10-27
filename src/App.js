@@ -8,6 +8,7 @@ import { moleActions, moleSelectors } from "./Store/mole";
 import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
 import useMoleAnimationController from "./customHooks/useMoleAnimationController";
 import UseGameOver from "./customHooks/useGameOver";
+import Hummer from "./components/Hummer/Hummer";
 
 function App() {
 	const [ isOpen, setIsOpen ] = useState(false)
@@ -72,6 +73,7 @@ function App() {
 					</CSSTransition>
 				}
 			</TransitionGroup>
+
 		</div>
 	)
 }

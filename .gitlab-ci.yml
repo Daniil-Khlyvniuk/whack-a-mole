@@ -15,7 +15,7 @@ build-pages:
    - CI=false npm install
    - CI=false npm run build
    - rm -rf public
-   - cp build/index.html build/404.html
+   - cp build/index.html
    - mv build public
   artifacts:
    paths:

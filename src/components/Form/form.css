@@ -1,25 +1,20 @@
-@import "../global/vars";
-
-
 .formWrapper {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #00000099;
-  }
-
 }
 
+.formWrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #00000099;
+}
 
 .form {
   padding: 25px;
@@ -37,30 +32,30 @@
   font-size: 18px;
   line-height: 1.6;
   color: rgb(46, 40, 37);
+}
 
-  & > button {
-    background-color: rgb(255, 50, 100);
-    line-height: 1.6;
-    border: none;
-    border-radius: .5em;
-    padding: 5px 10px;
-    font-size: 25px;
-    color: rgb(46, 40, 37);
-    display: block;
-    margin: 1em auto;
-  }
+.form > button {
+  background-color: rgb(255, 50, 100);
+  line-height: 1.6;
+  border: none;
+  border-radius: .5em;
+  padding: 5px 10px;
+  font-size: 25px;
+  color: rgb(46, 40, 37);
+  display: block;
+  margin: 1em auto;
+}
 
-  h2 {
-    margin: 0;
-  }
+.form h2 {
+  margin: 0;
+}
 
-  label {
-    margin-right: .5em;
+.form label {
+  margin-right: .5em;
+}
 
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+.form label:last-child {
+  margin-right: 0;
 }
 
 .formWrapper.formWrapper-enter {
@@ -70,7 +65,6 @@
 .formWrapper.formWrapper-enter-active {
   opacity: 1;
   transition: opacity linear .5s;
-  //animation: ease-in .3s appearing 1 forwards;
 }
 
 .formWrapper.formWrapper-appear {
@@ -80,16 +74,11 @@
 .formWrapper.formWrapper-appear-active {
   opacity: 1;
   transition: opacity linear .5s;
-  //animation: ease-in .3s appearing 1 forwards;
 }
 
 
 .form.form-enter {
   opacity: 1;
-}
-
-.form.form-enter-active {
-  //animation: ease-in .3s appearing 1 forwards;
 }
 
 .form.form-appear {
@@ -109,9 +98,7 @@
 }
 
 
-//_____________________________________________________________________________
-
-
+/*____________________________________________________*/
 .mainFormTitle,
 .secondaryFormTitle,
 .formContent,
@@ -120,19 +107,9 @@
 }
 
 
-.mainFormTitle.mainFormTitle-appear-active {
-  //color: greenyellow;
-  //animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .7s forwards 1;
-  //opacity: 1;
-}
-
 .mainFormTitle.mainFormTitle-appear-done {
   animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .5s forwards 1;
 }
-
-//.secondaryFormTitle.secondaryFormTitle-enter-active {
-//
-//}
 
 .formContent.formContent-appear-done {
   animation: appearingFormContent cubic-bezier(0, .48, .12, .83) .5s forwards 1 .5s;
@@ -169,7 +146,6 @@
 
 @keyframes exitingForm {
   0% {
-    //top: 25%;
     transform-origin: bottom;
     transform: translate(-50%, -50%) rotateX(0);
   }

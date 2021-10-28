@@ -11,7 +11,7 @@ const Hummer = () => {
 	const hummer = useRef(null)
 	const [ widthPX, setWidthPX ] = useState()
 	const [ heightPX, setHeightPX ] = useState()
-	const { active, exitActive, hummerClass } = useStyles()
+	const { active, hummerClass } = useStyles()
 
 	const handleMoseMove = (ev) => {
 		setX(ev.x)
@@ -34,8 +34,11 @@ const Hummer = () => {
 		document.addEventListener("mouseup", handleMoseUp)
 		setWidthPX(hummer.current.offsetWidth)
 		setHeightPX(hummer.current.offsetHeight)
+
 		return () => {
 			document.removeEventListener("mousemove", handleMoseMove)
+			document.addEventListener("mousedown", handleMoseDown)
+			document.addEventListener("mouseup", handleMoseUp)
 		}
 	}, [])
 

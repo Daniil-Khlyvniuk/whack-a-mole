@@ -6,11 +6,6 @@
   overflow: visible;
 }
 
-.score p {
-  font-size: 2em;
-  font-weight: bold;
-  color: rgb(255, 50, 100);
-}
 
 .scoreCounter {
   transform-origin: center;
@@ -38,13 +33,6 @@
   animation: .05s cubic-bezier(1, .01, .6, 1.07) 1 backwards newScore;
 }
 
-//.scoreCounter.entered {
-//  animation: .5s cubic-bezier(1, 0, 0, 1) 1 backwards scoreRotate;
-//}
-//
-
-
-//________________________________________
 
 
 @keyframes newScore {

@@ -1,4 +1,4 @@
-import "./_form.scss"
+import "./form.css"
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
@@ -9,7 +9,6 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	const dispatch = useDispatch()
 	const [ isShowedMainTitle, setIsShowedMainTitle ] = useState(didStarted)
 	let chosenLevel
-
 
 	const setDifficultyLevel = (ev) => {
 		ev.preventDefault()

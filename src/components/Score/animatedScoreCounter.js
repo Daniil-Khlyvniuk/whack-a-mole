@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Transition } from "react-transition-group";
-import "./score.scss"
+import "./score.css"
 import { useSelector } from "react-redux";
 import { gamePlaySelectors } from "../../Store/gamePlay";
 

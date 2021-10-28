@@ -1,0 +1,78 @@
+svg {
+  width: 100%;
+}
+
+.cls-1 {
+  fill: #574338;
+}
+
+.cls-2 {
+  fill: #725849;
+}
+
+.cls-3 {
+  fill: #fff;
+}
+
+.cls-4 {
+  fill: #3c3b3d;
+}
+
+.cls-5, .cls-7 {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+}
+
+.cls-5 {
+  stroke: #fff;
+}
+
+.cls-6 {
+  fill: #ed5470;
+}
+
+.cls-7 {
+  stroke: gray;
+}
+
+.st0-caught {
+  fill: #574338;
+}
+
+.st1-caught {
+  fill: #725849;
+}
+
+.st2-caught {
+  fill: #3C3B3D;
+}
+
+.st3-caught {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+
+.st4-caught {
+  fill: #ED5470;
+}
+
+.st5-caught {
+  fill: #FFFFFF;
+}
+
+.st6-caught {
+  fill: none;
+  stroke: #808080;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+}
+
+.st7-caught {
+  fill: none;
+  stroke: #000000;
+  stroke-width: 3;
+  stroke-miterlimit: 10;
+}

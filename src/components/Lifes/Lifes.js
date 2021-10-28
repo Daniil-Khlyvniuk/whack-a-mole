@@ -1,12 +1,11 @@
 import React, { memo } from 'react';
-import "./lifes.scss"
+import "./lifes.css"
 import { useSelector } from "react-redux";
 import { gamePlaySelectors } from "../../Store/gamePlay";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Lives = () => {
 	const lives = useSelector(gamePlaySelectors.getLives())
-
 
 	return (
 		<TransitionGroup className="lifeWrapper">

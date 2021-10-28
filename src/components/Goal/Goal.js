@@ -1,5 +1,5 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
-import "../GameAria/_gameAria.scss"
+import "../GameAria/gameAria.css"
 import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
 import { useDispatch, useSelector } from "react-redux";
 import { moleActions, moleSelectors } from "../../Store/mole";
@@ -50,17 +50,12 @@ const Goal = ({ id }) => {
 			in={ isActive && updateTrigger }
 			timeout={ +speed }
 			classNames={ {
-				enter: goal,
 				enterActive: active,
-				enterDone: goal,
-				exit: goal,
-				exitActive: goal,
-				exitDone: goal,
 			} }
 			onEntering={ handleEnter }
 			onExit={ handleExit }
 		>
-			<div onMouseDown={ caught ? null : catching }>
+			<div className={ goal } onMouseDown={ caught ? null : catching }>
 			</div>
 		</CSSTransition>
 	)

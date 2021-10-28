@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Mole/_mole.scss"
+import "../Mole/moleSVG.css"
 
 
 const MoleSVG = ({ isCaught }) => {
@@ -7,7 +7,7 @@ const MoleSVG = ({ isCaught }) => {
 		isCaught
 			?
 			<svg id="Слой_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 324.1"
-			     style={ { enableBackground:"new 0 0 125 324.1" }}>
+			     style={ { enableBackground: "new 0 0 125 324.1" } }>
 				<path className="st0-caught" d="M64.6,0h6.2C94.7,0,114,19.3,114,43.2v237.7c0,23.8-19.3,43.2-43.2,43.2h-6.2c-23.8,0-43.2-19.3-43.2-43.2V43.2
 	C21.4,19.3,40.7,0,64.6,0z"/>
 				<path className="st1-caught" d="M57.2,0h6.2c23.8,0,43.2,19.3,43.2,43.2v237.7c0,23.8-19.3,43.2-43.2,43.2h-6.2c-23.8,0-43.2-19.3-43.2-43.2

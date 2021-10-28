@@ -1,0 +1,10 @@
+.mole {
+  width: 75%;
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}

@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import "./score.scss"
+import "./score.css"
 import AnimatedScoreCounter from "./animatedScoreCounter";
 
 const Score = () => (

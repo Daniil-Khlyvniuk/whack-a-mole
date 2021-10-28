@@ -1,24 +1,20 @@
 import './App.css';
 import Form from "./components/Form/Form";
 import GameAria from "./components/GameAria/GameAria";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { gamePlayActions, gamePlaySelectors } from "./Store/gamePlay";
-import { moleActions, moleSelectors } from "./Store/mole";
-import { CSSTransition, Transition, TransitionGroup } from "react-transition-group";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { gamePlaySelectors } from "./Store/gamePlay";
+import { moleSelectors } from "./Store/mole";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useMoleAnimationController from "./customHooks/useMoleAnimationController";
-import UseGameOver from "./customHooks/useGameOver";
-import Hummer from "./components/Hummer/Hummer";
 
 function App() {
 	const [ isOpen, setIsOpen ] = useState(false)
 	const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
 	const activeMole = useSelector(moleSelectors.getActiveMole())
-	const dispatch = useDispatch()
 	const { startAnimation, stopAnimation } = useMoleAnimationController()
 	const lives = useSelector(gamePlaySelectors.getLives())
-	const { backToInitState } = UseGameOver()
 
 	const handleClick = () => {
 		setIsOpen(false)
@@ -27,8 +23,9 @@ function App() {
 	useEffect(() => {
 		if (lives < 1) {
 			stopAnimation()
-			// dispatch(gamePlayActions.setIsPlaying(false))
-			backToInitState()
+			// setTimeout(() => {
+			// backToInitState()
+			// }, +speed)
 		}
 	}, [ lives ])
 
@@ -73,7 +70,6 @@ function App() {
 					</CSSTransition>
 				}
 			</TransitionGroup>
-
 		</div>
 	)
 }

@@ -3,7 +3,6 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
 	goal: {
-		cursor: "pointer",
 		position: "absolute",
 		top: "100%",
 		left: "15%",

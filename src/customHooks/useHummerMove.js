@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { createUseStyles } from "react-jss";
 
-	const useStyles = createUseStyles({
+const useStyles = createUseStyles({
 		hummer: {
 			position: "absolute",
 			zIndex: 4,

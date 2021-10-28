@@ -1,5 +1,5 @@
 import React from 'react';
-import "../Mole/moleSVG.css"
+import "./moleSVG.css"
 
 
 const MoleSVG = ({ isCaught }) => {

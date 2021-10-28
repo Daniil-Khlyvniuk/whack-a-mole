@@ -1,30 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
 import hummerPNG from "../../assets/img/hummer.png"
-import UseHummerMove from "../../customHooks/useHummerMove";
 import { CSSTransition } from "react-transition-group";
 import useStyles from "./styles";
+import { useSelector } from "react-redux";
+import { gamePlaySelectors } from "../../Store/gamePlay";
+
 
 const Hummer = () => {
+	const didStart = useSelector(gamePlaySelectors.getIsPlaying())
 	const [ x, setX ] = useState(0)
 	const [ y, setY ] = useState(0)
 	const [ isHitAnimActive, setIsStartAnimActive ] = useState(false)
-	const hummer = useRef(null)
 	const [ widthPX, setWidthPX ] = useState()
 	const [ heightPX, setHeightPX ] = useState()
 	const { active, hummerClass } = useStyles()
+	const hummer = useRef()
+
 
 	const handleMoseMove = (ev) => {
 		setX(ev.x)
 		setY(ev.y)
 	}
-	const handleMoseDown = (ev) => {
+	const handleMoseDown = () => {
 		setIsStartAnimActive(true)
-		console.log("handleMoseDown")
 	}
-	const handleMoseUp = (ev) => {
+	const handleMoseUp = () => {
 		setIsStartAnimActive(false)
-		console.log("handleMoseUp")
-
 	}
 
 
@@ -32,18 +33,18 @@ const Hummer = () => {
 		document.addEventListener("mousemove", handleMoseMove)
 		document.addEventListener("mousedown", handleMoseDown)
 		document.addEventListener("mouseup", handleMoseUp)
-		setWidthPX(hummer.current.offsetWidth)
-		setHeightPX(hummer.current.offsetHeight)
+		setWidthPX(hummer?.current?.offsetWidth)
+		setHeightPX(hummer?.current?.offsetHeight)
 
 		return () => {
 			document.removeEventListener("mousemove", handleMoseMove)
 			document.addEventListener("mousedown", handleMoseDown)
 			document.addEventListener("mouseup", handleMoseUp)
 		}
-	}, [])
+	}, [ didStart ])
 
 
-	return (
+	return didStart && (
 		<CSSTransition
 			in={ isHitAnimActive }
 			timeout={ 150 }

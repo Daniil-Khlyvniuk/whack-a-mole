@@ -1,9 +1,10 @@
 import React from 'react';
 import "./tap.css"
+import flesh from "../../assets/img/flash.png"
 
 const TapAnimation = () => {
 	return (
-		<div className={ "tap" }/>
+		<img src={ flesh } className={ "tap" }/>
 	);
 };
 

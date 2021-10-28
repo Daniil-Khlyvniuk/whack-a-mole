@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import "./mole.css"
 import "./animation.css"
-import "./moleSVG.css"
 import MoleSVG from "../Images/MoleSVG";
 import { useSelector } from "react-redux";
 import { moleSelectors } from "../../Store/mole";

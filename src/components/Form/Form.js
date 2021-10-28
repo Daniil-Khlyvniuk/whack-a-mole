@@ -1,8 +1,8 @@
 import "./form.css"
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
-import { CSSTransition, SwitchTransition, Transition, TransitionGroup } from "react-transition-group";
+import React, { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { gamePlayActions } from "../../Store/gamePlay";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 
 const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {

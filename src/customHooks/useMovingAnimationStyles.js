@@ -2,7 +2,6 @@ import React from 'react';
 import { createUseStyles } from 'react-jss'
 import { useSelector } from "react-redux";
 import { gamePlaySelectors } from "../Store/gamePlay";
-import { css, keyframes } from "@emotion/react";
 
 
 const UseMovingAnimationStyles = () => {

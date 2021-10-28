@@ -15,10 +15,8 @@ const useMoleAnimationController = () => {
 		while ([ 4, 10 ].includes(index)) {
 			index = Math.floor(Math.random() * molesIDs.length)
 		}
-
 		return molesIDs[index]
 	}
-
 
 	const startAnimation = useCallback(() => timer = setTimeout(() => {
 		let activeId = getRandomActiveMole()
@@ -26,6 +24,7 @@ const useMoleAnimationController = () => {
 	}, +speed), [])
 
 	const stopAnimation = useCallback(() => {
+		dispatch(moleActions.setActiveMole(-1))
 		return clearTimeout(timer)
 	}, [])
 

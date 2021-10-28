@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { createUseStyles } from "react-jss";
-import { route } from "express/lib/router";
 
 const useStyles = createUseStyles({
 	'@keyframes hit': {
@@ -18,7 +17,7 @@ const useStyles = createUseStyles({
 	hummerClass: {
 		position: "absolute",
 		zIndex: "4",
-		width: "30%",
+		width: "25%",
 		aspectRatio: "3 / 1.3",
 		pointerEvents: "none",
 		transform: "rotate(-15deg)",

@@ -30,7 +30,6 @@ function App() {
 
 	useEffect(() => {
 		if (!didStarted) return
-		console.log("start anim")
 		startAnimation()
 	}, [ didStarted, activeMole, updateTrigger ])
 

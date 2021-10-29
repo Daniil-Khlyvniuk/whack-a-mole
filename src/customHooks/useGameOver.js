@@ -6,9 +6,14 @@ import { gamePlayActions } from "../Store/gamePlay";
 const UseGameOver = () => {
 	const dispatch = useDispatch()
 
+
 	const backToInitState = () => {
 		dispatch(moleActions.replay())
 		dispatch(gamePlayActions.replay())
+
+		setTimeout(() => {
+		dispatch(gamePlayActions.setLives(3))
+		}, 500)
 	}
 
 	return {

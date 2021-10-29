@@ -10,6 +10,8 @@ import useStyles from "./styles";
 
 const Goal = ({ id }) => {
 	const isActive = useSelector(moleSelectors.getActiveMole()) === id
+	const didStart = useSelector(gamePlaySelectors.getIsPlaying())
+
 	const [ caught, setCaught ] = useState(false)
 	const [ updateTrigger, setUpdateTrigger ] = useState(true)
 	const isPlaying = useSelector(gamePlaySelectors.getIsPlaying())
@@ -47,7 +49,7 @@ const Goal = ({ id }) => {
 
 	return (
 		<CSSTransition
-			in={ isActive && updateTrigger }
+			in={ isActive && updateTrigger && didStart }
 			timeout={ +speed }
 			classNames={ {
 				enterActive: active,

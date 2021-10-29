@@ -7,7 +7,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	const dispatch = useDispatch()
-	const [ isShowedMainTitle, setIsShowedMainTitle ] = useState(didStarted)
+	const [ isMainTitleShowed, setIsMainTitleShowed ] = useState(didStarted)
 	let chosenLevel
 
 	const setDifficultyLevel = (ev) => {
@@ -35,13 +35,13 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 				in={ didStarted }
 				appear
 				classNames={ "form" }
-				onEntered={ () => setIsShowedMainTitle(true) }
+				onEntered={ () => setIsMainTitleShowed(true) }
 			>
 				<form onSubmit={ setDifficultyLevel } className={ `form ` } action="">
 					<TransitionGroup component={ null }>
 						<CSSTransition
 							timeout={ 500 }
-							in={ isShowedMainTitle }
+							in={ isMainTitleShowed }
 							classNames={ "mainFormTitle" }
 							appear
 						>
@@ -52,7 +52,7 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 						</CSSTransition>
 						<CSSTransition
 							timeout={ 500 }
-							in={ isShowedMainTitle }
+							in={ isMainTitleShowed }
 							classNames={ "formContent" }
 							appear
 						>
@@ -74,7 +74,7 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 						</CSSTransition>
 						<CSSTransition
 							timeout={ 500 }
-							in={ isShowedMainTitle }
+							in={ isMainTitleShowed }
 							classNames={ "formBtn" }
 							appear
 						>

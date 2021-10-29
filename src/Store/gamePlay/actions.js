@@ -21,8 +21,13 @@ const setIsLoading = (isLoading) => ({
 })
 
 const livesDecrement = (decrement) => ({
-	type: types.SET_LIVES,
+	type: types.LIVES_DECREMENT,
 	payload: decrement
+})
+
+const setLives = (lives) => ({
+	type: types.SET_LIVES,
+	payload: lives
 })
 
 const setSpeed = (speed) => ({
@@ -42,6 +47,7 @@ export default {
 	setIsLoading,
 	livesDecrement,
 	setSpeed,
-	replay
+	replay,
+	setLives
 }
 

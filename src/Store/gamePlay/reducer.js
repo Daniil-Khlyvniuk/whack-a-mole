@@ -42,14 +42,22 @@ const reducer = (state = initialState, action) => {
 				isPlaying: action.payload
 			}
 
-		case types.SET_LIVES:
+		case types.LIVES_DECREMENT:
 			return {
 				...state,
 				lives: state.lives - 1
 			}
+			case types.SET_LIVES:
+			return {
+				...state,
+				lives: action.payload
+			}
 
 		case types.SET_INITIAL_STATE:
-			return initialState
+			return {
+				...initialState,
+				lives: state.lives
+			}
 
 		default:
 			return state;

@@ -1,4 +1,3 @@
-import './App.css';
 import Form from "./components/Form/Form";
 import GameAria from "./components/GameAria/GameAria";
 import { useEffect, useState } from "react";
@@ -7,6 +6,7 @@ import { gamePlaySelectors } from "./Store/gamePlay";
 import { moleSelectors } from "./Store/mole";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import useMoleAnimationController from "./customHooks/useMoleAnimationController";
+import useGameOver from "./customHooks/useGameOver";
 
 function App() {
 	const [ isOpen, setIsOpen ] = useState(false)
@@ -14,20 +14,13 @@ function App() {
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
 	const activeMole = useSelector(moleSelectors.getActiveMole())
 	const { startAnimation, stopAnimation } = useMoleAnimationController()
+	const { backToInitState } = useGameOver()
 	const lives = useSelector(gamePlaySelectors.getLives())
 
 	const handleClick = () => {
 		setIsOpen(false)
 	}
 
-	useEffect(() => {
-		if (lives < 1) {
-			stopAnimation()
-			// setTimeout(() => {
-			// backToInitState()
-			// }, +speed)
-		}
-	}, [ lives ])
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -37,9 +30,16 @@ function App() {
 
 	useEffect(() => {
 		if (!didStarted) return
+		console.log("start anim")
 		startAnimation()
 	}, [ didStarted, activeMole, updateTrigger ])
 
+	useEffect(() => {
+		if (lives < 1) {
+			stopAnimation()
+			backToInitState()
+		}
+	}, [ lives ])
 
 	return (
 		<div className="App">

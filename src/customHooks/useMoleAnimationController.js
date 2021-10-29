@@ -6,6 +6,7 @@ import { gamePlaySelectors } from "../Store/gamePlay";
 const useMoleAnimationController = () => {
 	const dispatch = useDispatch()
 	const speed = useSelector(gamePlaySelectors.getSpeed())
+	const didStart = useSelector(gamePlaySelectors.getIsPlaying())
 	const molesIDs = useSelector(moleSelectors.getMoleIDs())
 	let timer
 

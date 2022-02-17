@@ -8,16 +8,12 @@ const useMoleAnimationController = callback => {
 	const dispatch = useDispatch()
 	const speed = useSelector(gamePlaySelectors.getSpeed())
 	const diffLvl = useSelector(gamePlaySelectors.getDifficultyLevel())
-	// const isDiffLvlDynamic =
-	// useSelector(gamePlaySelectors.isDynamicDifficultyLevel())
 	const speedUpValue = useSelector(gamePlaySelectors.speedUpValue())
 	const speedUpTime = useSelector(gamePlaySelectors.speedUpTime())
-	// const setIsDiffLvlDynamic = useSelector()
 	const molesIDs = useSelector(moleSelectors.getMoleIDs())
 	let timer
 	let timer1
 	let timer2
-	let timer3
 
 
 	const getRandomActiveMole = () => {
@@ -42,7 +38,6 @@ const useMoleAnimationController = callback => {
 		clearTimeout(timer)
 		clearTimeout(timer1)
 		clearTimeout(timer2)
-		return
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 

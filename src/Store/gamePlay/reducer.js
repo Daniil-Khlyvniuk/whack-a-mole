@@ -1,12 +1,24 @@
 import types from "./types";
 
 const initialState = {
-	difficultyLevel: "easy",
-	speed: 1200,
+	settings: {
+		difficultyLevel: "easy",
+		dynamicDifficultyLevel: false,
+		speed: {
+			currentSpeed: 1200,
+			isSpeedEvenly: true,
+			delta: 1,
+			speedUpTime: 1000,
+			speedUpValue: .9
+		},
+		hummer: false,
+	},
+
 	score: 0,
+	lives: 3,
+	pause: false,
 	isPlaying: false,
 	isLoading: true,
-	lives: 3
 }
 
 
@@ -15,13 +27,68 @@ const reducer = (state = initialState, action) => {
 		case types.SET_DIFFICULTY_LEVEL:
 			return {
 				...state,
-				difficultyLevel: action.payload
+				settings: {
+					...state.settings,
+					difficultyLevel: action.payload
+				}
 			}
 
 		case types.SET_SPEED:
+			console.log(`test`, action.payload)
 			return {
 				...state,
-				speed: state.speed + action.payload
+				settings: {
+					...state.settings,
+					speed: {
+						...state.settings.speed,
+						currentSpeed: action.payload
+					}
+				}
+			}
+
+		case types.SET_SPEED_DELTA:
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					speed: {
+						...state.settings.speed,
+						delta: action.payload
+					}
+				}
+			}
+
+		case types.SET_SPEED_UP:
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					speed: {
+						...state.settings.speed,
+						speedUpTime: action.payload,
+					}
+				}
+			}
+
+			case types.SET_IS_SPEED_EVENTLY:
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					speed: {
+						...state.settings.speed,
+						isSpeedEvenly: action.payload
+					}
+				}
+			}
+
+		case types.SET_SPEED_DYNAMIC:
+			return {
+				...state,
+				settings: {
+					...state.settings,
+					dynamicDifficultyLevel: action.payload
+				}
 			}
 
 		case types.SET_SCORE:

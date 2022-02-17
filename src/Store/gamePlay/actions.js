@@ -35,11 +35,33 @@ const setSpeed = (speed) => ({
 	payload: speed
 })
 
+const setSpeedDelta = (speedDelta) => ({
+	type: types.SET_SPEED_DELTA,
+	payload: speedDelta
+})
+
+const setSpeedUpTime = (speedUp) => ({
+	type: types.SET_SPEED_UP,
+	payload: speedUp
+})
+
+
+const setIsDifLvlDynamic = (isDynamic) => ({
+	type: types.SET_SPEED_DYNAMIC,
+	payload: isDynamic
+})
+
+const setIsSpeedEvently = (isEvently) => ({
+	type: types.SET_IS_SPEED_EVENTLY,
+	payload: isEvently
+})
+
 const replay = () => ({
 	type: types.SET_INITIAL_STATE,
 })
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
 	setDifficultyLevel,
 	setScore,
@@ -48,6 +70,10 @@ export default {
 	livesDecrement,
 	setSpeed,
 	replay,
-	setLives
+	setLives,
+	setIsDifLvlDynamic,
+	setSpeedUpTime,
+	setIsSpeedEvently,
+	setSpeedDelta
 }
 

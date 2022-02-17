@@ -1,26 +1,33 @@
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { CSSTransition, TransitionGroup } from "react-transition-group"
+import useMoleAnimationController
+	from "../../customHooks/useMoleAnimationController"
+import { gamePlayActions } from "../../Store/gamePlay"
 import "./form.css"
-import React, { useState } from 'react';
-import { useDispatch } from "react-redux";
-import { gamePlayActions } from "../../Store/gamePlay";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 
 const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	const dispatch = useDispatch()
 	const [ isMainTitleShowed, setIsMainTitleShowed ] = useState(didStarted)
-	let chosenLevel
+	const [ chosenLvl, setLvl ] = useState(null)
+	const { setAnimation, speedUp } = useMoleAnimationController()
 
 	const setDifficultyLevel = (ev) => {
 		ev.preventDefault()
-		if (!chosenLevel) return
-		dispatch(gamePlayActions.setDifficultyLevel(chosenLevel))
+		if (!chosenLvl) return
+
+		dispatch(gamePlayActions.setDifficultyLevel(chosenLvl))
 		dispatch(gamePlayActions.setIsPlaying(true))
 		dispatch(gamePlayActions.setIsLoading(false))
+		setAnimation(chosenLvl)
+		// speedUp(chosenLvl)
+
 		cb()
 	}
 
 	const handleChange = (ev) => {
-		chosenLevel = ev.target.value
+		setLvl(ev.target.value)
 	}
 
 
@@ -30,7 +37,7 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 				timeout={ {
 					appear: 700,
 					enter: 300,
-					exit: 1000,
+					exit: 1000
 				} }
 				in={ didStarted }
 				appear
@@ -59,15 +66,18 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 							<div className={ "formContent" } onChange={ handleChange }>
 								<p>{ text }</p>
 								<label>
-									<input value={ "easy" } type={ "radio" } name={ "DifficultyLeve" }/>
+									<input value={ "easy" } type={ "radio" }
+												 name={ "DifficultyLeve" } />
 									Easy
 								</label>
 								<label>
-									<input value={ "normal" } type={ "radio" } name={ "DifficultyLeve" }/>
+									<input value={ "normal" } type={ "radio" }
+												 name={ "DifficultyLeve" } />
 									Normal
 								</label>
 								<label>
-									<input value={ "hard" } type={ "radio" } name={ "DifficultyLeve" }/>
+									<input value={ "hard" } type={ "radio" }
+												 name={ "DifficultyLeve" } />
 									Hard
 								</label>
 							</div>
@@ -85,6 +95,6 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 			</CSSTransition>
 		</TransitionGroup>
 	)
-};
+}
 
-export default Form;
+export default Form

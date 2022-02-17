@@ -13,9 +13,10 @@ function App() {
 	const didStarted = useSelector(gamePlaySelectors.getIsPlaying())
 	const updateTrigger = useSelector(moleSelectors.getUpdateTrigger())
 	const activeMole = useSelector(moleSelectors.getActiveMole())
-	const { startAnimation, stopAnimation } = useMoleAnimationController()
+	const { startAnimation, stopAnimation, speedUp } = useMoleAnimationController()
 	const { backToInitState } = useGameOver()
 	const lives = useSelector(gamePlaySelectors.getLives())
+	const diffLvl = useSelector(gamePlaySelectors.getDifficultyLevel())
 
 	const handleClick = () => {
 		setIsOpen(false)
@@ -26,18 +27,27 @@ function App() {
 		setTimeout(() => {
 			setIsOpen(!didStarted)
 		}, 500)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ didStarted ])
 
 	useEffect(() => {
 		if (!didStarted) return
 		startAnimation()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ didStarted, activeMole, updateTrigger ])
+
+	useEffect(() => {
+		if (!didStarted) return
+		speedUp(diffLvl)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [ didStarted, activeMole, updateTrigger, diffLvl ])
 
 	useEffect(() => {
 		if (lives < 1) {
 			stopAnimation()
 			backToInitState()
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ lives ])
 
 	return (

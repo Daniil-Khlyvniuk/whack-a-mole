@@ -11,12 +11,10 @@ import UseMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles
 
 const Mole = ({ id }) => {
 	const didStart = useSelector(gamePlaySelectors.getIsPlaying())
-
 	const isActive = +useSelector(moleSelectors.getActiveMole()) === id
 	const caught = useSelector(moleSelectors.getCaughtMole()) === id
 	const speed = useSelector(gamePlaySelectors.getSpeed())
 	const classes = UseMovingAnimationStyles("mole")
-
 	return (
 		<CSSTransition
 			in={ isActive && didStart }

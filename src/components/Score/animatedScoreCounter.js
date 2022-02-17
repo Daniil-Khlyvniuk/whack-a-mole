@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Transition } from "react-transition-group";
+import React, { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { Transition } from "react-transition-group"
+import { gamePlaySelectors } from "../../Store/gamePlay"
 import "./score.css"
-import { useSelector } from "react-redux";
-import { gamePlaySelectors } from "../../Store/gamePlay";
+
 
 const AnimatedScoreCounter = () => {
 	const score = useSelector(gamePlaySelectors.getScore())
@@ -25,7 +26,7 @@ const AnimatedScoreCounter = () => {
 				)
 			}
 		</Transition>
-	);
-};
+	)
+}
 
-export default AnimatedScoreCounter;
+export default AnimatedScoreCounter

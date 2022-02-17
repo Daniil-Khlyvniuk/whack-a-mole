@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from "react-redux";
 import { moleActions } from "../Store/mole";
 import { gamePlayActions } from "../Store/gamePlay";

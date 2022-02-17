@@ -1,11 +1,12 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { CSSTransition } from "react-transition-group"
+import UseMovingAnimationStyles
+	from "../../customHooks/useMovingAnimationStyles"
+import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay"
+import { moleActions, moleSelectors } from "../../Store/mole"
 import "../GameAria/gameAria.css"
-import { gamePlayActions, gamePlaySelectors } from "../../Store/gamePlay";
-import { useDispatch, useSelector } from "react-redux";
-import { moleActions, moleSelectors } from "../../Store/mole";
-import { CSSTransition } from "react-transition-group";
-import UseMovingAnimationStyles from "../../customHooks/useMovingAnimationStyles";
-import useStyles from "./styles";
+import useStyles from "./styles"
 
 
 const Goal = ({ id }) => {
@@ -16,7 +17,7 @@ const Goal = ({ id }) => {
 	const [ updateTrigger, setUpdateTrigger ] = useState(true)
 	const isPlaying = useSelector(gamePlaySelectors.getIsPlaying())
 	const lives = useSelector(gamePlaySelectors.getLives())
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 	const speed = useSelector(gamePlaySelectors.getSpeed())
 	const { active } = UseMovingAnimationStyles()
 	const { goal } = useStyles()
@@ -31,6 +32,7 @@ const Goal = ({ id }) => {
 
 		setCaught(true)
 		dispatch(moleActions.setCaughtMole(id))
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ speed ])
 
 	const handleEnter = useCallback(() => {
@@ -39,12 +41,14 @@ const Goal = ({ id }) => {
 			setCaught(false)
 			dispatch(moleActions.setCaughtMole(-1))
 		}, +speed)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ speed ])
 
 	const handleExit = useCallback(() => {
 		if (isPlaying && !caught) {
-			dispatch(gamePlayActions.livesDecrement(1))
+			// dispatch(gamePlayActions.livesDecrement(1))
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ isPlaying, caught ])
 
 	return (
@@ -52,15 +56,14 @@ const Goal = ({ id }) => {
 			in={ isActive && updateTrigger && didStart }
 			timeout={ +speed }
 			classNames={ {
-				enterActive: active,
+				enterActive: active
 			} }
 			onEntering={ handleEnter }
 			onExit={ handleExit }
 		>
-			<div className={ goal } onMouseDown={ caught ? null : catching }>
-			</div>
+			<div className={ goal } onMouseDown={ caught ? null : catching } />
 		</CSSTransition>
 	)
-};
+}
 
-export default memo(Goal);
+export default memo(Goal)

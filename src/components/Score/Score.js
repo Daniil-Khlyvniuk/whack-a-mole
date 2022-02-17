@@ -4,7 +4,6 @@ import AnimatedScoreCounter from "./animatedScoreCounter";
 
 const Score = () => (
 	<div className={ `score` }>
-		{/*<p> Score: </p>*/ }
 		<AnimatedScoreCounter/>
 	</div>
 );

@@ -1,5 +1,6 @@
 import types from "./types"
 
+
 const setActiveMole = (activeMole) => ({
 	type: types.SET_ACTIVE_MOLE,
 	payload: activeMole
@@ -24,5 +25,12 @@ const replay = () => ({
 	type: types.SET_INITIAL_STATE,
 })
 
-export default { setActiveMole, setCaughtMole, setUpdateTrigger, setMoleIDs, replay }
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+	setActiveMole,
+	setCaughtMole,
+	setUpdateTrigger,
+	setMoleIDs,
+	replay
+}
 

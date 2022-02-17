@@ -34,7 +34,6 @@ const reducer = (state = initialState, action) => {
 			}
 
 		case types.SET_SPEED:
-			console.log(`test`, action.payload)
 			return {
 				...state,
 				settings: {

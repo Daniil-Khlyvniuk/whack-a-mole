@@ -19,7 +19,7 @@ const Mole = ({ id }) => {
 		<CSSTransition
 			in={ isActive && didStart }
 			timeout={ +speed }
-			className={ isActive ? `mole ${ classes.active }` : "mole" }
+			className={ isActive && didStart ? `mole ${ classes.active }` : "mole" }
 		>
 			<div>
 				<MoleSVG isCaught={ caught }/>

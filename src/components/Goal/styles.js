@@ -3,7 +3,7 @@ import { createUseStyles } from "react-jss";
 const useStyles = createUseStyles({
 	goal: {
 		position: "absolute",
-		top: "100%",
+		top: "80%",
 		left: "15%",
 		right: "15%",
 		bottom: "-25%",

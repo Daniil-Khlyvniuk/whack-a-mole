@@ -4,7 +4,7 @@ import { gamePlayActions, gamePlaySelectors } from "../Store/gamePlay"
 import { moleActions, moleSelectors } from "../Store/mole"
 
 
-const useMoleAnimationController = () => {
+const useMoleAnimationController = callback => {
 	const dispatch = useDispatch()
 	const speed = useSelector(gamePlaySelectors.getSpeed())
 	const diffLvl = useSelector(gamePlaySelectors.getDifficultyLevel())
@@ -15,6 +15,9 @@ const useMoleAnimationController = () => {
 	// const setIsDiffLvlDynamic = useSelector()
 	const molesIDs = useSelector(moleSelectors.getMoleIDs())
 	let timer
+	let timer1
+	let timer2
+	let timer3
 
 
 	const getRandomActiveMole = () => {
@@ -26,7 +29,7 @@ const useMoleAnimationController = () => {
 		return molesIDs[index]
 	}
 
-	const startAnimation = useCallback(() =>
+	const startAnimation = useCallback(callback =>
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 		timer = setTimeout(() => {
 			let activeId = getRandomActiveMole()
@@ -34,10 +37,12 @@ const useMoleAnimationController = () => {
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		}, +speed), [ speed ])
 
-
 	const stopAnimation = useCallback(() => {
 		dispatch(moleActions.setActiveMole(-1))
-		return clearTimeout(timer)
+		clearTimeout(timer)
+		clearTimeout(timer1)
+		clearTimeout(timer2)
+		return
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
@@ -48,14 +53,14 @@ const useMoleAnimationController = () => {
 	const speedUp = (diffLvl) => {
 		switch (diffLvl) {
 			case "normal":
-				setTimeout(function fn() {
+				timer2 =	setTimeout(function fn() {
 					const newSpeed = Math.max(550, speed * speedUpValue)
 					dispatch(gamePlayActions.setSpeed(newSpeed))
 				}, +speedUpTime)
 				return
 			case "hard":
 				let delta = getDelta()
-				setTimeout(function fn() {
+				timer1 = setTimeout(function fn() {
 					delta = getDelta()
 					const newSpeed = Math.max(450, speed * speedUpValue)
 					dispatch(gamePlayActions.setSpeed(newSpeed))

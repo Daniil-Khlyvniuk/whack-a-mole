@@ -46,7 +46,7 @@ const Goal = ({ id }) => {
 
 	const handleExit = useCallback(() => {
 		if (isPlaying && !caught) {
-			// dispatch(gamePlayActions.livesDecrement(1))
+			dispatch(gamePlayActions.livesDecrement(1))
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [ isPlaying, caught ])

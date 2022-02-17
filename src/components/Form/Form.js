@@ -11,7 +11,7 @@ const Form = ({ titleText, supTitleText, btnText, text, didStarted, cb }) => {
 	const dispatch = useDispatch()
 	const [ isMainTitleShowed, setIsMainTitleShowed ] = useState(didStarted)
 	const [ chosenLvl, setLvl ] = useState(null)
-	const { setAnimation, speedUp } = useMoleAnimationController()
+	const { setAnimation } = useMoleAnimationController()
 
 	const setDifficultyLevel = (ev) => {
 		ev.preventDefault()
